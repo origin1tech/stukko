@@ -3,9 +3,35 @@
   "version": "0.0.1",
   "description": "Angular CMS",
   "main": "stukko.js",
-  "dependencies": {},
+  "dependencies": {
+    "lodash": "^2.4.1"
+  },
   "devDependencies": {
-    "grunt-jsdoc": "^0.5.4"
+    "mocha": "~1.9.0",
+    "gi-assert": "git://github.com/goinstant/assert.git#v1.0.0",
+    "sinon": "~1.9.0",
+    "browserify": "~3.32.1",
+    "karma": "~0.12.0",
+    "karma-browserify": "0.0.6",
+    "karma-mocha": "~0.1.1",
+    "karma-chrome-launcher": "~0.1.2",
+    "karma-phantomjs-launcher": "~0.1.2",
+    "karma-firefox-launcher": "~0.1.3",
+    "karma-safari-launcher": "~0.1.1",
+    "gulp-karma": "0.0.3",
+    "gulp": "^3.5.5",
+    "gulp-clean": "^0.2.4",
+    "gulp-rename": "^1.2.0",
+    "gulp-bump": "^0.1.6",
+    "gulp-concat": "^2.1.7",
+    "gulp-git": "^0.3.5",
+    "gulp-livereload": "^1.2.0",
+    "gulp-open": "^0.2.8",
+    "gulp-notify": "^1.2.0",
+    "gulp-load-plugins": "^0.4.0",
+    "gulp-jshint": "^1.5.0",
+    "gulp-browserify": "~0.5.0",
+    "gulp-uglify": "~0.2.1"
   },
   "scripts": {
     "test": "test"
@@ -21,10 +47,11 @@
     "CMS"
   ],
   "author": {
-	"name": "Carey Hazelton",
-	"email": "origin1tech@gmail.com"
+    "name": "Carey Hazelton",
+    "email": "origin1tech@gmail.com"
   },
   "license": "MIT",
+  "readmeFilename": "README.md",
   "bugs": {
     "url": "https://github.com/chazelton/stukko/issues"
   },
