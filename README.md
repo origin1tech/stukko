@@ -1,4 +1,4 @@
 Stukko
 ======
 
-###An Angular client-side framework.
+###An Angular client-side framework utility.
