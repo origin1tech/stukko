@@ -1,0 +1,32 @@
+{
+  "name": "stukko",
+  "version": "0.0.1",
+  "description": "Angular CMS",
+  "main": "stukko.js",
+  "dependencies": {},
+  "devDependencies": {
+    "grunt-jsdoc": "^0.5.4"
+  },
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/chazelton/stukko.git"
+  },
+  "keywords": [
+    "Angular",
+    "Stukko",
+    "Framework",
+    "CMS"
+  ],
+  "author": {
+	"name": "Carey Hazelton",
+	"email": "origin1tech@gmail.com"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/chazelton/stukko/issues"
+  },
+  "homepage": "https://github.com/chazelton/stukko"
+}

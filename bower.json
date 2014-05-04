@@ -1,0 +1,24 @@
+{
+  "name": "stukko",
+  "version": "0.0.1",
+  "authors": [
+    "chazelton <origin1tech@gmail.com>"
+  ],
+  "description": "Angular CMS",
+  "main": "stukko.js",
+  "keywords": [
+    "Angular",
+    "Framework",
+	"CMS"
+  ],
+  "license": "MIT",
+  "homepage": "http://www.stukkojs.com",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests",
+	".idea"
+  ]
+}
