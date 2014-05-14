@@ -1,11 +1,11 @@
 {
-  "name": "stukko",
+  "directory": "stukko",
   "version": "0.0.1",
   "authors": [
     "chazelton <origin1tech@gmail.com>"
   ],
-  "description": "Angular CMS",
-  "main": "stukko.js",
+  "description": "Web Framework",
+  "main": "./lib/index.js",
   "keywords": [
     "Angular",
     "Framework",

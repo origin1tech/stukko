@@ -1,0 +1,19 @@
+{
+    "name": "myapp",
+    "version": "0.0.1",
+    "description": "Stukko web application",
+    "main": "app.js",
+    "dependencies": {
+        "gulp": "^3.5.5",
+        "gulp-clean": "^0.2.4",
+        "gulp-rename": "^1.2.0",
+        "gulp-concat": "^2.1.7",
+        "gulp-load-plugins": "^0.4.0",
+        "gulp-uglify": "~0.2.1",
+        "gulp-browserify": "^0.5.0",
+        "gulp-cssmin": "^0.1.5",
+        "gulp-less": "^1.2.3",
+        "connect-mongo": "^0.4.1",
+        "stukko": "0.0.1"
+    }
+}
