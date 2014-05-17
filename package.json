@@ -28,11 +28,7 @@
   },
   "devDependencies": {
     "mocha": "~1.9.0",
-    "gi-assert": "git://github.com/goinstant/assert.git#v1.0.0",
-    "sinon": "~1.9.0",
-    "browserify": "~3.32.1",
     "karma": "~0.12.0",
-    "karma-browserify": "0.0.6",
     "karma-mocha": "~0.1.1",
     "karma-chrome-launcher": "~0.1.2",
     "karma-phantomjs-launcher": "~0.1.2",
@@ -46,11 +42,12 @@
     "gulp-load-plugins": "^0.4.0",
     "gulp-uglify": "~0.2.1",
     "gulp-karma": "0.0.3",
-    "gulp-jshint": "^1.5.0",
-    "gulp-browserify": "^0.5.0",
     "gulp-cssmin": "^0.1.5",
     "gulp-less": "^1.2.3",
-    "npm": "^1.4.10"
+    "gulp-sass": "^0.7.1",
+    "npm": "^1.4.10",
+    "gulp-if": "^1.2.0",
+    "yargs": "^1.2.2"
   },
   "scripts": {
     "test": "test"
@@ -62,8 +59,7 @@
   "keywords": [
     "Angular",
     "Stukko",
-    "Framework",
-    "CMS"
+    "Framework"
   ],
   "author": {
     "name": "Carey Hazelton",
