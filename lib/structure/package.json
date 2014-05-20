@@ -11,7 +11,11 @@
         "gulp-uglify": "~0.2.1",
         "gulp-cssmin": "^0.1.5",
         "gulp-less": "^1.2.3",
-	    "gulp-sass": "^0.7.1",
+        "gulp-sass": "^0.7.1",
+        "gulp-if": "^1.2.0",
+        "yargs": "^1.2.2",
+        "gulp-load-plugins": "^0.4.0",
+        "gulp-ngmin": "^0.3.0",
         "stukko": "0.0.1"
     }
 }
