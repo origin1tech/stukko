@@ -1,7 +1,7 @@
-#Helpers
+#Utilities
 ----
 
-Helpers are methods/functions that are exposed within your application. 
+Utilities are methods/functions that are exposed within your application. 
 
 For example you may functions for formatting strings or perhaps some RegExp utility and so on.
 
@@ -21,7 +21,7 @@ See below for an example of a helper module where the file name/module-name is f
     };
 </pre>
 
-From a controller you would call the above helper like so:
+From a controller you would call the above utility like so:
 
 <pre>
     module.exports = {
@@ -29,7 +29,7 @@ From a controller you would call the above helper like so:
             
             var self = this,
                 data = {}, // get the user data from your database.
-                format = self.helpers.format;
+                format = self.utilities.format;
                 
             data.url = format.truncate(data.url, 30);
             
@@ -37,5 +37,4 @@ From a controller you would call the above helper like so:
     }
 </pre>
 
-**NOTE:** wrapping a helper module in a function is not required however you may wish to do so to apply context. 
-
+**NOTE:** utilities do not have Stukko context they should be used only as helper functions.

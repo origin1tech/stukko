@@ -1,7 +1,8 @@
 {
-    "name": "temp2",
+    "name": "app",
     "version": "0.0.1",
     "description": "Stukko web application",
+	"copyright": "&copy 2014",
     "main": "app.js",
     "dependencies": {
         "gulp": "^3.5.5",

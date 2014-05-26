@@ -2,10 +2,11 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>{{_appName}}</title>
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <style type="text/css">
-        .container { margin-top: 32px; }
+        header { padding-top: 32px; }
+        footer {  position: fixed; bottom: 0px; padding: 8px; width: 100%;}
         img { width: 215px; }
         p { margin-top: 20px; }
     </style>
@@ -13,24 +14,26 @@
     <!-- endinject -->
 </head>
 <body>
-<div class="container">
-
-    <div class="row">
-        <div class="col-sm-6">
-            <img src="/img/logo.png" style="width: 215px;" />
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-6">
+                <img src="/img/logo.png" style="width: 215px;" />
+            </div>
+            <div class="col-sm-6" style="text-align: right;">
+                <h3>Express 4.x Web Framework</h3>
+            </div>
         </div>
-        <div class="col-sm-6" style="text-align: right;">
-            <h3>Express 4.x Web Framework</h3>
-        </div>
+        <p>
+            Visit <a href="http://www.stukkojs.com">http://www.stukkojs.com</a> for documentation.
+        </p>
     </div>
-
-    <p>
-        Visit <a href="http://www.stukkojs.com">http://www.stukkojs.com</a> for documentation.
-    </p>
-
+</header>
+<div id="#main">
 </div>
-<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script type="text/javascript" src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<footer>
+    <div class="copyright text-center">{{_copyright}}</div>
+</footer>
 <!-- inject:js -->
 <!-- endinject -->
 </body>
