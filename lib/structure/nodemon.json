@@ -1,0 +1,8 @@
+{
+	"verbose": true,
+	"ignore": [
+		"server/configuration",
+		"web/public", "logs",
+		".tmp"
+	]
+}
