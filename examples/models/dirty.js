@@ -231,7 +231,6 @@
 
 		err = new Error('The ' + this.model + ' could not be validated.');
 		err.validations = errors;
-
 		return err;
 
 	};
