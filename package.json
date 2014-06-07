@@ -31,7 +31,9 @@
     "ejs": "^1.0.0",
     "swig": "^1.3.2",
     "hamljs": "^0.6.2",
-    "dirty": "^0.9.9"
+    "dirty": "^0.9.9",
+    "mysql": "^2.3.2",
+    "connect-mysql": "^2.0.5"
   },
   "devDependencies": {
     "gulp": "^3.5.5",
