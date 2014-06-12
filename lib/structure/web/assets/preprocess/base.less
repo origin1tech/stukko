@@ -1,0 +1,61 @@
+/* Main Styles
+ * just some default styling
+ * remove/change as needed.
+ ************************************/
+* {
+  margin: 0;
+}
+body, html { height: 100%; }
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  overflow:hidden;
+  white-space:nowrap;
+  background-color: #333;
+  color: #888;
+  .row {
+    height: 50px; /* same height as header */
+    line-height: 50px;
+  }
+  .tagline {
+    color: rgba(0,0,0,0.7);
+    font-size: 135%;
+    text-shadow: 0px 2px 3px rgba(255,255,255,0.1);
+  }
+}
+#main {
+  min-height: 100%;
+  height: 100%;
+  padding-bottom: 40px; /* same height as footer */
+  padding-top: 50px;
+  &:after {
+    content: "";
+    display: block;
+    height: 40px; /* same height as footer */
+  }
+}
+div.page {
+  height: inherit;
+}
+footer {
+  background: #fff;
+  color: #333333;
+  height: 40px; /* same height as pseudo after for main */
+  margin-top: -40px; /* same height as footer height */
+  .row {
+    height: 40px; /* same height as header */
+    line-height: 40px;
+  }
+}
+.logo img {
+  position: relative;
+  margin-top: -6px; /* adjust logo for better vertical centering */
+  max-height: 32px;
+}
+
+/* Mixin Styles
+*************************************************/
+

@@ -1,4 +1,6 @@
 .idea/
 node_modules/
-web/
 structure/node_modules
+structure/.tmp
+structure/.backup
+structure/logs/*.*
