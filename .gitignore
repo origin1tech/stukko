@@ -1,6 +1,6 @@
 .idea/
 node_modules/
-structure/node_modules
-structure/.tmp
-structure/.backup
-structure/logs/*.*
+/lib/structure/node_modules
+/lib/structure/.tmp
+/lib/structure/.backup
+/lib/structure/logs/*.log
