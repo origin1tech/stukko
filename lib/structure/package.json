@@ -16,7 +16,6 @@
         "gulp-if": "^1.2.0",
         "yargs": "^1.2.2",
         "event-stream": "^3.1.5",
-        "gulp-inject": "^0.4.1",
-        "stukko": "0.0.1"
+        "gulp-inject": "^0.4.1"
     }
 }

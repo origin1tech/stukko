@@ -11,7 +11,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- inject:css -->
-    <link rel="stylesheet" href="/manage/css/base.css">
+    <link rel="stylesheet" href="/css/base.css">
     <!-- endinject -->
     <!--<link rel="stylesheet" href="/manage/css/base.css">-->
 </head>
@@ -22,27 +22,26 @@
             <div class="col-md-6">
                 <div class="logo">
                     <a href="/"><img src="/manage/img/shared/logo.png" alt="{{_pkg.name}} logo"/></a>
-                    <span class="tagline visible-sm visible-xs">Manage Application</span>
                 </div>
             </div>
             <div class="col-md-6 text-right">
-                <span class="tagline visible-md visible-lg">Manage Application</span>
+                <span class="header-text">Manage Application</span>
             </div>
         </div>
     </div>
 </header>
 <div id="main" ng-view></div>
-<!--<footer>-->
-    <!--<div class="container container-max">-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-4"></div>-->
-            <!--<div class="col-md-4 text-center">-->
-                <!--&copy 2014 {{_pkg.name}} | ver: {{_pkg.version}}-->
-            <!--</div>-->
-            <!--<div class="col-md-4 text-right"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</footer>-->
+<footer>
+    <div class="container container-max">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center">
+                &copy 2014 {{_pkg.name}} | ver: {{_pkg.version}}
+            </div>
+            <div class="col-md-4 text-right"></div>
+        </div>
+    </div>
+</footer>
 <script>
     window._config = {{&config}};
     window._pkg = {{&pkg}};
@@ -59,23 +58,23 @@
 <!--<script type="text/javascript" src="/manage/js/ace/ext-language_tools.js"></script>-->
 <!--<script type="text/javascript" src="/manage/js/manage.js" type="text/javascript" charset="utf-8"></script>-->
 <!-- inject:js -->
-<script src="/manage/js/manage.js"></script>
-<script src="/manage/js/ace/ace.js"></script>
-<script src="/manage/js/ace/ext-beautify.js"></script>
-<script src="/manage/js/ace/ext-language_tools.js"></script>
-<script src="/manage/js/ace/ext-spellcheck.js"></script>
-<script src="/manage/js/ace/mode-css.js"></script>
-<script src="/manage/js/ace/mode-ejs.js"></script>
-<script src="/manage/js/ace/mode-haml.js"></script>
-<script src="/manage/js/ace/mode-handlebars.js"></script>
-<script src="/manage/js/ace/mode-html.js"></script>
-<script src="/manage/js/ace/mode-javascript.js"></script>
-<script src="/manage/js/ace/mode-json.js"></script>
-<script src="/manage/js/ace/mode-less.js"></script>
-<script src="/manage/js/ace/mode-markdown.js"></script>
-<script src="/manage/js/ace/mode-sass.js"></script>
-<script src="/manage/js/ace/theme-chrome.js"></script>
-<script src="/manage/js/ace/theme-merbivore.js"></script>
+<script src="/js/manage.js"></script>
+<script src="/js/ace/ace.js"></script>
+<script src="/js/ace/ext-beautify.js"></script>
+<script src="/js/ace/ext-language_tools.js"></script>
+<script src="/js/ace/ext-spellcheck.js"></script>
+<script src="/js/ace/mode-css.js"></script>
+<script src="/js/ace/mode-ejs.js"></script>
+<script src="/js/ace/mode-haml.js"></script>
+<script src="/js/ace/mode-handlebars.js"></script>
+<script src="/js/ace/mode-html.js"></script>
+<script src="/js/ace/mode-javascript.js"></script>
+<script src="/js/ace/mode-json.js"></script>
+<script src="/js/ace/mode-less.js"></script>
+<script src="/js/ace/mode-markdown.js"></script>
+<script src="/js/ace/mode-sass.js"></script>
+<script src="/js/ace/theme-chrome.js"></script>
+<script src="/js/ace/theme-merbivore.js"></script>
 <!-- endinject -->
 </body>
 </html>

@@ -1,0 +1,164 @@
+/* Main Styles
+ * just some default styling
+ * remove/change as needed.
+ ************************************/
+* {
+  margin: 0;
+}
+body,
+html {
+  height: 100%;
+}
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  height: 50px;
+  z-index: 1;
+  overflow: hidden;
+  white-space: nowrap;
+  background-color: #333333;
+  color: #888888;
+}
+header .row {
+  height: 50px;
+  /* same height as header */
+  line-height: 50px;
+  /* same height as header */
+}
+header .tagline {
+  color: rgba(0, 0, 0, 0.7);
+  font-size: 135%;
+  text-shadow: 0px 2px 3px rgba(255, 255, 255, 0.1);
+}
+#main {
+  height: 100%;
+  padding-top: 50px;
+}
+div.page {
+  height: inherit;
+}
+.logo img {
+  position: relative;
+  margin-top: -6px;
+  /* adjust logo for better vertical centering */
+  max-height: 32px;
+}
+/* Menu Styles
+*************************************************/
+.menu {
+  height: inherit;
+  position: fixed;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  background-color: #333333;
+  padding-top: 50px;
+  /* same height as header */
+  width: 175px;
+}
+.menu ul {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+  border-top: 1px solid #222222;
+  color: #ffffff;
+}
+.menu ul li {
+  position: relative;
+}
+.menu ul li a,
+.menu ul li .title {
+  display: block;
+  padding: 10px 14px;
+  border-top: 1px solid #444444;
+  border-bottom: 1px solid #222222;
+}
+.menu ul li a {
+  color: #666666;
+  text-decoration: none;
+}
+.menu ul li a:hover {
+  color: #999999;
+}
+.menu ul li .menu-active {
+  width: 0;
+  height: 0;
+  border-top: 9px solid transparent;
+  border-bottom: 9px solid transparent;
+  border-right: 9px solid #ffffff;
+  position: absolute;
+  right: 0;
+  top: 25%;
+}
+/* Content Styles
+*************************************************/
+.content {
+  height: inherit;
+  margin-left: 175px;
+  padding: 32px;
+}
+.dash-panel {
+  border: 1px solid #eeeeee;
+  padding: 8px;
+  -webkit-border-radius: 4px;
+  -moz-border-radius: 4px;
+  border-radius: 4px;
+  background: #f9fcf7;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #f9fcf7 0%, #f5f9f0 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f9fcf7), color-stop(100%, #f5f9f0));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #f9fcf7 0%, #f5f9f0 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #f9fcf7 0%, #f5f9f0 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #f9fcf7 0%, #f5f9f0 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #f9fcf7 0%, #f5f9f0 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9fcf7', endColorstr='#f5f9f0', GradientType=0);
+  /* IE6-9 */
+}
+/* Mixin Styles
+*************************************************/
+.container-max {
+  margin: 0 auto;
+  width: 100%;
+}
+/* Media Queries
+**************************************************/
+/* Landscape phones and smaller */
+@media (max-width: 480px) {
+  [class*="col-"] {
+    /* adds margin for responsive Bootstrap cols */
+    margin-bottom: 12px;
+  }
+  .text-right-resp {
+    /* moves text left for responsive Bootstrap cols */
+    text-align: left;
+  }
+  .tagline.visible-sm,
+  .tagline-visible-xs {
+    float: right;
+  }
+}
+/* Landscape phones and portrait tablets */
+@media (max-width: 767px) {
+  [class*="col-"] {
+    /* adds margin for responsive Bootstrap cols */
+    margin-bottom: 12px;
+  }
+  .text-right-resp {
+    /* moves text left for responsive Bootstrap cols */
+    text-align: left;
+  }
+  .tagline.visible-sm,
+  .tagline-visible-xs {
+    float: right;
+  }
+}
+/* Portrait tablets and small desktops */
+/* Portrait tablets and medium desktops */
+/* Large desktops and laptops */
