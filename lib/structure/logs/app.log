@@ -1,4 +1,0 @@
-{"level":"info","message":"Dirty database [app.db] has successfully connected.","timestamp":"2014-06-12T20:18:51.878Z"}
-{"level":"info","message":"Application [app] started at http:// localhost:9000","timestamp":"2014-06-12T20:18:51.879Z"}
-{"level":"error","message":"module.js:340\r\n    throw err;\r\n          ^\r\nError: Cannot find module 'D:\\Projects\\WebNode\\stukko\\lib\\structure\\node_modules\\gulp\\bin\\gulp.js'\r\n    at Function.Module._resolveFilename (module.js:338:15)\r\n    at Function.Module._load (module.js:280:25)\r\n    at Function.Module.runMain (module.js:497:10)\r\n    at startup (node.js:119:16)\r\n    at node.js:902:3\r\n","timestamp":"2014-06-12T20:18:51.912Z"}
-{"level":"error","message":"Gulp process terminated with code: 8","timestamp":"2014-06-12T20:18:51.913Z"}
