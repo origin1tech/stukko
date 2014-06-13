@@ -2,7 +2,7 @@
 	"version": "0.0.1",
 	"env": "development",
 	"browser": false,
-	"host": "localhost",
+	"host": "10.10.20.151",
 	"port": 9000,
 	"statusErrors": true,
 	"db": {
