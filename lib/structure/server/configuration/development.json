@@ -2,7 +2,7 @@
 	"version": "0.0.1",
 	"env": "development",
 	"browser": false,
-	"host": "10.10.20.151",
+	"host": "localhost",
 	"port": 9000,
 	"statusErrors": true,
 	"db": {
@@ -30,10 +30,10 @@
 				"./manage/assets/mixin/**/*.js"
 			],
 			"concat": [
-				"mixins.css",
-				"mixins.js",
-				"mixins.css",
-				"mixins.js"
+				"mixin.css",
+				"mixin.js",
+				"mixin.css",
+				"mixin.js"
 			],
 			"dest": [
 				"./web/public/css",
