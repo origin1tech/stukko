@@ -13,7 +13,6 @@
     <!-- inject:css -->
     <link rel="stylesheet" href="/manage/css/base.css">
     <!-- endinject -->
-    <!--<link rel="stylesheet" href="/manage/css/base.css">-->
 </head>
 <body>
 <header>
@@ -32,23 +31,13 @@
     </div>
 </header>
 <div id="main" ng-view></div>
-<!--<footer>-->
-    <!--<div class="container container-max">-->
-        <!--<div class="row">-->
-            <!--<div class="col-md-4"></div>-->
-            <!--<div class="col-md-4 text-center">-->
-                <!--&copy 2014 {{_pkg.name}} | ver: {{_pkg.version}}-->
-            <!--</div>-->
-            <!--<div class="col-md-4 text-right"></div>-->
-        <!--</div>-->
-    <!--</div>-->
-<!--</footer>-->
 <script>
     window._config = {{&config}};
     window._pkg = {{&pkg}};
     window._diag = {{&diag}};
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>

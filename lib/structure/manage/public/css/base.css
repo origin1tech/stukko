@@ -120,6 +120,9 @@ div.page {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9fcf7', endColorstr='#f5f9f0', GradientType=0);
   /* IE6-9 */
+  text-align: center;
+  line-height: 125px;
+  height: 125px;
 }
 /* Mixin Styles
 *************************************************/
