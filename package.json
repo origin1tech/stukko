@@ -37,7 +37,10 @@
     "gulp-clean": "^0.2.4",
     "gulp-uglify": "^0.2.1",
     "gulp": "^3.8.0",
-    "gulp-sass": "^0.7.2"
+    "gulp-sass": "^0.7.2",
+    "windows-cpu": "^0.1.1",
+    "usage": "^0.4.2",
+    "cap": "0.0.8"
   },
   "devDependencies": {
     "gulp": "^3.5.5",
@@ -52,7 +55,8 @@
     "yargs": "^1.2.2",
     "gulp-ngmin": "^0.3.0",
     "gulp-inject": "^0.4.1",
-    "event-stream": "^3.1.5"
+    "event-stream": "^3.1.5",
+    "gulp-watch": "^0.6.6-1"
   },
   "scripts": {
     "test": "test"

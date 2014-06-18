@@ -10,7 +10,9 @@
     <title>Manage - {{_pkg.name}}</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
-    <!-- inject:css -->
+    <!-- inject:common:css -->
+    <!-- endinject -->
+    <!-- inject:application:css -->
     <link rel="stylesheet" href="/manage/css/base.css">
     <!-- endinject -->
 </head>
@@ -37,12 +39,11 @@
     window._diag = {{&diag}};
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-2.1.1.min.js"></script>
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
-<!-- inject:js -->
-<script src="/manage/js/manage.js"></script>
+<!-- inject:common:js -->
+<script src="/manage/js/mixin.js"></script>
 <script src="/manage/js/ace/ace.js"></script>
 <script src="/manage/js/ace/ext-beautify.js"></script>
 <script src="/manage/js/ace/ext-language_tools.js"></script>
@@ -59,6 +60,9 @@
 <script src="/manage/js/ace/mode-sass.js"></script>
 <script src="/manage/js/ace/theme-chrome.js"></script>
 <script src="/manage/js/ace/theme-merbivore.js"></script>
+<!-- endinject -->
+<!-- inject:application:js -->
+<script src="/manage/js/manage.js"></script>
 <!-- endinject -->
 </body>
 </html>

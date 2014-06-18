@@ -1,22 +1,9 @@
 {
-    "name": "app",
-    "version": "0.0.1",
-    "description": "Stukko web application",
+	"name": "app",
+	"version": "0.0.1",
+	"description": "Stukko web application",
 	"copyright": "&copy 2014",
-    "main": "server.js",
-    "dependencies": {
-        "gulp": "^3.5.5",
-        "gulp-clean": "^0.2.4",
-        "gulp-rename": "^1.2.0",
-        "gulp-concat": "^2.1.7",
-        "gulp-uglify": "~0.2.1",
-        "gulp-cssmin": "^0.1.5",
-        "gulp-less": "^1.2.3",
-        "gulp-sass": "^0.7.1",
-        "gulp-if": "^1.2.0",
-        "yargs": "^1.2.2",
-        "event-stream": "^3.1.5",
-        "gulp-inject": "^0.4.1",
-	    "stukko": "^0.0.1"
-    }
+	"main": "server.js",
+	"dependencies": {
+	}
 }
