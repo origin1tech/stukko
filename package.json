@@ -40,7 +40,9 @@
     "gulp-sass": "^0.7.2",
     "windows-cpu": "^0.1.1",
     "usage": "^0.4.2",
-    "cap": "0.0.8"
+    "cap": "0.0.8",
+    "ip": "^0.3.0",
+    "moment": "^2.7.0"
   },
   "devDependencies": {
     "gulp": "^3.5.5",

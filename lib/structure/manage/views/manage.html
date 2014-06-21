@@ -7,7 +7,7 @@
 <head lang="en">
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Manage - {{_pkg.name}}</title>
+    <title>{{_pkg.name}} - Manage</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
     <!-- inject:common:css -->
@@ -43,10 +43,13 @@
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-route.min.js"></script>
 <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.16/angular-sanitize.min.js"></script>
 <!-- inject:common:js -->
-<script src="/manage/js/mixin.js"></script>
 <script src="/manage/js/ace/ace.js"></script>
 <script src="/manage/js/ace/ext-beautify.js"></script>
+<script src="/manage/js/ace/ext-error_marker.js"></script>
 <script src="/manage/js/ace/ext-language_tools.js"></script>
+<script src="/manage/js/ace/ext-linking.js"></script>
+<script src="/manage/js/ace/ext-searchbox.js"></script>
+<script src="/manage/js/ace/ext-settings_menu.js"></script>
 <script src="/manage/js/ace/ext-spellcheck.js"></script>
 <script src="/manage/js/ace/mode-css.js"></script>
 <script src="/manage/js/ace/mode-ejs.js"></script>
@@ -58,8 +61,16 @@
 <script src="/manage/js/ace/mode-less.js"></script>
 <script src="/manage/js/ace/mode-markdown.js"></script>
 <script src="/manage/js/ace/mode-sass.js"></script>
+<script src="/manage/js/ace/mode-scss.js"></script>
 <script src="/manage/js/ace/theme-chrome.js"></script>
 <script src="/manage/js/ace/theme-merbivore.js"></script>
+<script src="/manage/js/ace/worker-css.js"></script>
+<script src="/manage/js/ace/worker-html.js"></script>
+<script src="/manage/js/ace/worker-javascript.js"></script>
+<script src="/manage/js/ace/worker-json.js"></script>
+<script src="/manage/js/flot/jquery.flot.js"></script>
+<script src="/manage/js/flot/jquery.flot.plugin.axislabels.js"></script>
+<script src="/manage/js/flot/jquery.flot.plugin.time.js"></script>
 <!-- endinject -->
 <!-- inject:application:js -->
 <script src="/manage/js/manage.js"></script>

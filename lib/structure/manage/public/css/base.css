@@ -1,3 +1,55 @@
+div.slide-label,
+div.slide-element {
+  height: 35px;
+  line-height: 35px;
+}
+div.slide-label {
+  float: left;
+  font-weight: bold;
+}
+div.slide-element {
+  float: right;
+}
+label.slide-label {
+  color: transparent;
+  background: url('http://rainycafe.com/img/sprite.png') -40px 0 no-repeat;
+  border-radius: 14px;
+  box-shadow: 0 1px 2px #888888, 0 0px 3px #777777, inset 0 -1px 5px #333333;
+  display: block;
+  position: relative;
+  text-indent: 100%;
+  width: 65px;
+  height: 29px;
+  -webkit-transition: background-position 0.3s ease;
+  -moz-transition: background-position 0.3s ease;
+  cursor: pointer;
+  font-size: .01em;
+  float: left;
+}
+label.slide-label span {
+  background: url('http://rainycafe.com/img/sprite.png') -1px -30px no-repeat;
+  border: 0px solid transparent;
+  border-radius: 14px;
+  box-shadow: 0 1px 3px #000, 0 2px 13px #000;
+  content: "";
+  display: block;
+  position: absolute;
+  top: 0;
+  left: -1px;
+  width: 28px;
+  height: 28px;
+  -webkit-transition: left .3s ease;
+  -moz-transition: left .3s ease;
+}
+input[type=checkbox].slide-element {
+  display: none;
+}
+input[type=checkbox].slide-element:checked + label {
+  background-position: 0 0;
+}
+input[type=checkbox].slide-element:checked + label span {
+  left: 40px;
+}
 /* Main Styles
  * just some default styling
  * remove/change as needed.
@@ -91,7 +143,7 @@ div.page {
   right: 0;
   top: 25%;
 }
-/* Content Styles
+/* Page, Panel & Content Styles
 *************************************************/
 .content {
   height: inherit;
@@ -99,8 +151,6 @@ div.page {
   padding: 32px;
 }
 .dash-panel {
-  border: 1px solid #eeeeee;
-  padding: 8px;
   -webkit-border-radius: 4px;
   -moz-border-radius: 4px;
   border-radius: 4px;
@@ -120,15 +170,108 @@ div.page {
   /* W3C */
   filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f9fcf7', endColorstr='#f5f9f0', GradientType=0);
   /* IE6-9 */
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+.dash-header {
+  border: 1px solid #444444;
+  margin-bottom: -1px;
+  padding: 8px;
+  font-weight: bold;
+  border-radius: 4px 4px 0px 0px;
+  -moz-border-radius: 4px 4px 0px 0px;
+  -webkit-border-radius: 4px 4px 0px 0px;
+  background: #444444;
+  /* Old browsers */
+  background: -moz-linear-gradient(top, #444444 1%, #333333 100%);
+  /* FF3.6+ */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(1%, #444444), color-stop(100%, #333333));
+  /* Chrome,Safari4+ */
+  background: -webkit-linear-gradient(top, #444444 1%, #333333 100%);
+  /* Chrome10+,Safari5.1+ */
+  background: -o-linear-gradient(top, #444444 1%, #333333 100%);
+  /* Opera 11.10+ */
+  background: -ms-linear-gradient(top, #444444 1%, #333333 100%);
+  /* IE10+ */
+  background: linear-gradient(to bottom, #444444 1%, #333333 100%);
+  /* W3C */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#444444', endColorstr='#333333', GradientType=0);
+  /* IE6-9 */
+  color: #999999;
+  font-size: 110%;
+}
+.dash-content {
+  padding: 8px;
+  border: 1px solid #eeeeee;
+}
+.dash-pie {
+  background-color: #ffffff;
+  border-top: 1px solid #dbdbdb;
+  border-left: 1px solid #dbdbdb;
+  border-right: 1px solid #eaeaea;
+  border-bottom: 1px solid #eaeaea;
+}
+.dash-group {
+  padding: 24px;
+}
+.dl-sm dt {
+  width: 85px;
+}
+.dl-sm dd {
+  margin-left: 95px;
+  word-wrap: break-word;
+}
+.settings-label {
+  margin-top: 6px;
+}
+/* Chart Styles
+*************************************************/
+.chart-pie-element {
+  position: relative;
+  width: 125px;
+  margin: 0 auto;
   text-align: center;
-  line-height: 125px;
+}
+.chart-pie-number {
+  font-weight: bolder;
+  position: absolute;
+  width: 125px;
   height: 125px;
+  display: block;
+  line-height: 125px;
+}
+.chart-pie-label {
+  text-align: center;
+  display: block;
+  font-weight: bold;
+}
+/* Editor Styles
+*************************************************/
+.editor-container {
+  height: 100%;
+  border: 1px solid #e5e5e5;
+}
+.editor-element {
+  height: inherit;
 }
 /* Mixin Styles
 *************************************************/
 .container-max {
   margin: 0 auto;
   width: 100%;
+}
+.table {
+  display: table;
+}
+.table > .row {
+  display: table-row;
+}
+.table > .row > [class*="col-"] {
+  display: table-cell;
+  vertical-align: middle;
+}
+.input-sm {
+  max-width: 60px;
 }
 /* Media Queries
 **************************************************/
@@ -158,6 +301,14 @@ div.page {
   .content {
     margin-left: 50px;
   }
+  .dl-sm dt {
+    width: 85px;
+  }
+  .dl-sm dd {
+    margin-left: 0px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+  }
 }
 /* Landscape phones and portrait tablets */
 @media (max-width: 767px) {
@@ -185,7 +336,51 @@ div.page {
   .content {
     margin-left: 50px;
   }
+  .dl-sm dt {
+    width: 85px;
+  }
+  .dl-sm dd {
+    margin-left: 0px;
+    margin-bottom: 8px;
+    word-wrap: break-word;
+  }
 }
 /* Portrait tablets and small desktops */
+@media (min-width: 768px) and (max-width: 991px) {
+  [class*="col-"] {
+    /* adds margin for responsive Bootstrap cols */
+    margin-bottom: 12px;
+  }
+  .menu {
+    width: 50px;
+  }
+  .menu .title {
+    display: none !important;
+  }
+  .menu a span {
+    display: none;
+  }
+  .content {
+    margin-left: 50px;
+  }
+}
 /* Portrait tablets and medium desktops */
+@media (min-width: 992px) and (max-width: 1199px) {
+  [class*="col-"] {
+    /* adds margin for responsive Bootstrap cols */
+    margin-bottom: 12px;
+  }
+  .menu {
+    width: 50px;
+  }
+  .menu .title {
+    display: none !important;
+  }
+  .menu a span {
+    display: none;
+  }
+  .content {
+    margin-left: 50px;
+  }
+}
 /* Large desktops and laptops */
