@@ -99,7 +99,7 @@ module.exports = function(req, res, next) {
 };
 ````
 
-**Middlware with Context
+**Middlware with Context**
 
 ````
 module.exports = function(req, res, next) {
@@ -110,7 +110,7 @@ module.exports = function(req, res, next) {
 };
 ````
 
-**Advanced Middleware Object
+**Advanced Middleware Object**
 
 ````
 module.exports = {
@@ -126,35 +126,43 @@ module.exports = {
 
 ###Assets & Linking
 
-**Bundling Assets
+**Bundling Assets**
 
 Stukko will bundle your assets in the defined folders to be watched. The properties of the assets object within your
 options configuration are explained below. Assets are generally output to /web/public followed by the extension name
 of the file. For example mixins that are javascript will be output to /web/public/js.
 
-clean - when true cleans your public directory before building the application, typically in /web/public.
-watch - when true your /web/assets directory is watched live for changed and will re-process or re-build your
++ **clean** + when true cleans your public directory before building the application, typically in /web/public.
+
++ **watch** + when true your /web/assets directory is watched live for changed and will re+process or re+build your
         application when a change is detected. NOTE files that are added or deleted currently do not get built. You'll
         need to manually restart for those instances. Additionally we've decided not to link assets that are newly created. 
         You'll need to reload your project manually. There are sound reasons not to do this. We may revisit this in the 
         future.
-backup - when true you will notice the /web/public directory is backed up prior to building and will be located in 
+        
++ **backup** + when true you will notice the /web/public directory is backed up prior to building and will be located in 
          /.backup.
-link - see below
-mixin - Concatenates all files and files within sub folders to a single file by the name you define in the concat
+         
++ **link** + see below
+
++ **mixin** + Concatenates all files and files within sub folders to a single file by the name you define in the concat
         property. This is good for common things, utilities and the like that don't need to be in separate directories.
-minify - This folder when output maintains the defined file structure when output to /web/public/js or /web/public/css
+        
++ **minify** + This folder when output maintains the defined file structure when output to /web/public/js or /web/public/css
          respectively. NOTE that when in development mode these files will merely be copied to the output location.
          This is because debugging unminified files makes more sense when developing. When you run your project in 
          "production" mode these files will be automatically minified as you'd expect.
-preprocess - 
-framework - This defines how to watch/build your client-side frameworks such as AngularJS, Backbone, Ember and the like.
+         
++ **preprocess** + Processes less and sass files. Only the root files are processessed. All dependency files should be imported
+             into your root theme file.
+
++ **framework** + This defines how to watch/build your client+side frameworks such as AngularJS, Backbone, Ember and the like.
             all files in this directory will be concatenated into a single file by the name you define in the concat
             property.
 
 
 
-**Asset Linking
+**Asset Linking**
 
 Asset linking is one of the more cool features of Stukko. Using Gulp we minify, concat and preprocess your less/sass 
 files automatically. This is invaluable and prevents the need to restart your application over and over as these files
@@ -192,6 +200,7 @@ An easy way to get the correct syntax for your language is to use a convert. You
 Here are a few where you can copy/past the HTML representation and have it converted to your view engine of choice.
 
 [Jade Converter](http://html2jade.aaron-powell.com/)
+
 [Haml Converter](http://html2haml.heroku.com/)
 
 Currently Stukko supports the following view engines EJS, Haml, Hogan and Jade.
