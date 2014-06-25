@@ -1,7 +1,0 @@
-<ul ng-controller="MenuCtrl">
-    <li ng-repeat="item in menu">
-        <div class="title" ng-show="{{!item.link}}">{{item.name}}</div>
-        <a ng-show="item.link" href="{{item.link}}"><i class="glyphicon" ng-class="item.glyphicon"></i> <span>{{item.name}}</span></a>
-        <div ng-show="item.active" class="menu-active"></div>
-    </li>
-</ul>
