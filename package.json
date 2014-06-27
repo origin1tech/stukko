@@ -1,11 +1,14 @@
 {
   "name": "stukko",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Web Framework for Express",
   "main": "./lib/index.js",
-  "private": true,
+  "preferGlobal": "true",
   "bin": {
     "stukko": "./bin/cli.js"
+  },
+  "directories": {
+    "bin": "./bin"
   },
   "dependencies": {
     "body-parser": "^1.4.3",
@@ -53,21 +56,24 @@
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "https://github.com/chazelton/stukko.git"
+    "url": "https://github.com/origin1tech/stukko.git"
   },
   "keywords": [
-    "Angular",
+    "Express",
     "Stukko",
-    "Framework"
+    "Framework",
+    "MVC",
+    "Sequelize",
+    "ORM"
   ],
   "author": {
-    "name": "Carey Hazelton",
+    "name": "Origin1 Technologies",
     "email": "origin1tech@gmail.com"
   },
   "license": "MIT",
   "readmeFilename": "README.md",
   "bugs": {
-    "url": "https://github.com/chazelton/stukko/issues"
+    "url": "https://github.com/origin1tech/stukko/issues"
   },
-  "homepage": "https://github.com/chazelton/stukko"
+  "homepage": "https://github.com/origin1tech/stukko"
 }

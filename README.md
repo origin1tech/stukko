@@ -1,5 +1,8 @@
 #Stukko
-======
+
+##Pre-Release
+
+This is a pre-release. Using in production should be done with caution.
 
 ##Express MVC Web Framework.
 
