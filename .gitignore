@@ -4,3 +4,4 @@ node_modules/
 /lib/structure/.tmp
 /lib/structure/.backup
 /lib/structure/logs/*.*
+.log
