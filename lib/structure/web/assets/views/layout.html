@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>{{settings.pkg.name}}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="shortcut icon" href="{{settings.config.favicon}}" type="image/x-icon" />
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+    <!-- inject:common:css -->
+    <!-- endinject -->
+    <!-- inject:application:css -->
+    <!-- endinject -->
+</head>
+<body>
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6">
+                <div class="logo">
+                    <a href="/"><img src="/img/shared/logo.png" alt="{{settings.pkg.name}} logo"/></a>
+                </div>
+            </div>
+            <div class="col-md-6 text-right">
+                <span class="tagline">Application</span>
+            </div>
+        </div>
+    </div>
+</header>
+<div id="main" ng-view></div>
+<footer>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4 text-center">
+                &copy 2014 {{settings.pkg.name}} | ver: {{settings.pkg.version}}
+            </div>
+            <div class="col-md-4 text-right"></div>
+        </div>
+    </div>
+</footer>
+<!-- inject:common:js -->
+<!-- endinject -->
+<!-- inject:application:js -->
+<!-- endinject -->
+</body>
+</html>

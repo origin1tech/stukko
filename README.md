@@ -12,11 +12,27 @@ can be configured see the /server/middleware/README.md file.
 
 ##Getting Started
 
-###To install Stukko from a command prompt or terminal:
+###Installing Stukko:
 
-````
+```
 npm install -g stukko
-````
+```
+
+###Setting Path:
+
+**NOTE:** Setting path may not be required. If "stukko start" returns "Cannot find module stukko" then set the PATH
+environment variable below per your platform and distribution.
+
+**Nix Systems** - your path may be slightly different depending on your distro, please verify. (CentOS shown below).
+
+```
+export NODE_PATH="/usr/local/lib/node_modules:$NODE_PATH"
+```
+
+**Windows 7/8**
+```
+SET PATH=%PATH%;%AppData%\npm\node_modules
+```
 
 It is best to install Stukko globally as it exposes create methods to create your application which will run on Stukko.
 Stukko also exposes several methods for managing its apps. Uninstall, install, update, diagnostics, kill(kills node
@@ -28,11 +44,11 @@ locally is just fine.
 From a command prompt or terminal navigate to the parent directory where you'd like your application to be installed.
 Stukko will create a sub folder by the name you choose in the create method show below:
 
-````
+```
 stukko create todos
-````
+```
 
-**NOTE** You do note need to run npm install after the application is created. Stukko programatically runs npm install
+**NOTE** You do note need to run npm install after the application is created. Stukko pragmatically runs npm install
 for you. It is important to also note that if you have additional packages you wish to install at the time of creation
 you can do this as well. Stukko ships with the **dirty** database module only. You'll likely be needing to install
 MongoDB, Mongoose, Sequelize or Redis. Or perhaps you want to install connect-redis, connect-mongo or connect-sequelize,
@@ -40,9 +56,9 @@ this can be accomplished in one shot as show here:
 
 ###Create application with additional packages:
 
-````
+```
 stukko create todos --packages sequelize|connect-sequelize
-````
+```
 
 **NOTE** You can separate packages using a pipe or comma.
 
@@ -54,19 +70,19 @@ of being opinionated with structure, default modules and so on it attempts to on
 more simplistic. More succinctly it takes out some of the redundancy of creating a Node/Express application. Stukko is
 extremely customizable. Paths and structure can be customized to your liking. Features can be enabled or disabled
 rather easily. Middleware is not only added to the Express stack but a mechanism to order the middleware (why this isn't
-common is all frameworks is a head scratcher) is available when sequence is critical.
+common is all frameworks is a head scratch-er) is available when sequence is critical.
 
 ###Does Stukko have an ORM?
 
 Not really, again the idea behind Stukko is to wire up an app with the common middleware, get you connected to your
 database, hook up your sessions and inject some helpers in your request and response objects. **Why didn't we include
 an ORM?** Well, we did at one point, however we found that no matter how complete we made it, there was great difficulty
-in exposing all the features of the original driver for each database engine. Additionally most use a database they
-are familiar with so changing engines is not as common as you might think. ORM's are cool but at the end of the day
-when it comes time to source a fix for a problem its helpful when the code you find is the same code you can use in 
-your project. More on this below but Stukko makes it easy to connect to your database using Redis, MongoDB, Mongoose,
-Dirty or Sequelize. So what's the point then? Stukko exposes some additional things. It automatically exposes your
-models and creates them based on the engine you're using. It also expose methods to the engine's client, connection,
+in exposing all the features of the original driver for each database engine. Not to mention keeping up with updates.
+Additionally most use a database they are familiar with so changing engines is not as common as you might think.
+ORM's are cool but at the end of the day when it comes time to source a fix for a problem its helpful when the
+code you find is the same code you can use in your project. More on this below but Stukko makes it easy to connect
+to your database using Redis, MongoDB, Mongoose, Dirty or Sequelize. So what's the point then? Stukko exposes some
+additional things. It automatically exposes your models via export. It also expose methods to the engine's client, connection,
 disconnect method and connection state. Stukko ensures that your database fires up correctly and shutsdown properly as 
 well. Because Stukko exposes the client and connection you have full control to let Stukko create your models based on
 your configuration or create/define them directly. Either way it just works!
@@ -109,43 +125,44 @@ Stukko supports 3 main types of session connections, Redis(connect-redis), Mongo
 MySQL, PostgreSQL, SQLite, MariaDB (connect-session-sequelize). Sequelize is a SQL Orm which enables connections to 
 the fore mentioned SQL engines.
 
-It is important to note that connect-mongo (when using mongoose ONLY) and connect-session-sequelize support 
-connecting using existing database connections if you have defined them. For example in your config if 
-you have the following: 
+It is important to note that connect-sequelize can use the existing db connection if Sequelize is your defined db.
+This means that you need only specify it as the module to use. Stukko will use your db connection that's already defined.
 
-````
+For example if you have:
+
+```
 db: {
-    module: 'mongoose',
+    module: 'sequelize',
     options: {
         // your connection options here.
     }
 }
-````
+```
 
-and are using mongodb for your database connection, Stukko will automatically used this connection. You need only
-to specify your config with no "storeOptions" specified.
+Stukko will automatically used this connection. You need only
+to specify your config/module with no "storeOptions".
 
-````
+```
 session (under middleware): { 
     use: 'express-session', 
     options: { 
-        name: 'mongo' // only need to specify the connect type. keep in mind "mongo" is the connect session 
-                     // module name where your db module may be "mongoose".
+        module: 'connect-sequelize' // only need to specify the connect type. keep in mind "mongo" is the connect session
+                                    // module name where your db module may be "mongoose".
     }
 } 
-````
+```
 
-Conversely if you were specify a separate connection you would configure 
+Conversely if you were to specify a separate connection you would do:
 
-````
+```
 session: { 
     use: 'express-session', 
     options: { 
-        name: 'mongo', 
+        module: 'mongo',
         storeOptions: { // my connection options here } 
     } 
 }
-````
+```
 
 All connect-session modules support their native settings created by the original developers. Hence you need merely 
 to set the "options" property in the "session" property with the options defined in their readme files. 
@@ -164,27 +181,27 @@ middleware.
 
 **Basic Middleware**
 
-````
+```
 module.exports = function(req, res, next) {
     // do something
     next();
 };
-````
+```
 
 **Middlware with Context**
 
-````
+```
 module.exports = function(req, res, next) {
     // do something with context
     // this is the host you specified in your development.json file for example.
     var host = this.options.host; 
     next();
 };
-````
+```
 
 **Advanced Middleware Object**
 
-````
+```
 module.exports = {
     enabled: true,
     order: 99, // add me to the end of the middlware stack. NOTE: bodyParser, logger(morgan), csurf, cors and 
@@ -194,7 +211,7 @@ module.exports = {
                                     // package to require as well cool right? 
     }
 };
-````
+```
 
 ##Assets & Linking
 
@@ -204,31 +221,28 @@ Stukko will bundle your assets in the defined folders to be watched. The propert
 options configuration are explained below. Assets are generally output to /web/public followed by the extension name
 of the file. For example mixins that are javascript will be output to /web/public/js.
 
-+ **clean** + when true cleans your public directory before building the application, typically in /web/public.
++ **clean** when true cleans your public directory before building the application, typically in /web/public.
 
-+ **watch** + when true your /web/assets directory is watched live for changed and will re+process or re+build your
++ **watch** when true your /web/assets directory is watched live for changed and will re+process or re+build your
         application when a change is detected. NOTE files that are added or deleted currently do not get built. You'll
         need to manually restart for those instances. Additionally we've decided not to link assets that are newly created. 
         You'll need to reload your project manually. There are sound reasons not to do this. We may revisit this in the 
         future.
-        
-+ **backup** + when true you will notice the /web/public directory is backed up prior to building and will be located in 
-         /.backup.
          
-+ **link** + see below
++ **link** see below
 
-+ **mixin** + Concatenates all files and files within sub folders to a single file by the name you define in the concat
++ **mixin** Concatenates all files and files within sub folders to a single file by the name you define in the concat
         property. This is good for common things, utilities and the like that don't need to be in separate directories.
         
-+ **minify** + This folder when output maintains the defined file structure when output to /web/public/js or /web/public/css
++ **minify** This folder when output maintains the defined file structure when output to /web/public/js or /web/public/css
          respectively. NOTE that when in development mode these files will merely be copied to the output location.
          This is because debugging unminified files makes more sense when developing. When you run your project in 
          "production" mode these files will be automatically minified as you'd expect.
          
-+ **preprocess** + Processes less and sass files. Only the root files are processessed. All dependency files should be imported
++ **preprocess** Processes less and sass files. Only the root files are processessed. All dependency files should be imported
              into your root theme file.
 
-+ **framework** + This defines how to watch/build your client+side frameworks such as AngularJS, Backbone, Ember and the like.
++ **framework** This defines how to watch/build your client+side frameworks such as AngularJS, Backbone, Ember and the like.
             all files in this directory will be concatenated into a single file by the name you define in the concat
             property.
 
@@ -247,10 +261,10 @@ The Application object would be assets that **MUST** be included in your layout 
 
 You'll notice in "layout.html" that there are sections for styles and javascript that look like:
 
-````
+```
 <!-- inject:common:js-->
 <!-- endinject -->
-````
+```
 
 Of course the above only applies if you are using a view engine that uses the .html extension or more specifically uses
 pure html markup for its rendering. Such as EJS, Hogan and so on. The default engine in Stukko is 
@@ -259,14 +273,14 @@ pure html markup for its rendering. Such as EJS, Hogan and so on. The default en
 If you wish to use a view engine that does not use html for its markup such as [Jade](http://jade-lang.com/), your
 start and end tags withing "common" or "application" would look like the below:
 
-````
+```
 {
       starttag: '// inject:css',
       endtag: '// endinject',
       css: 'link(rel="stylesheet", href="{{file}}")',
       js: 'script(src='/js/app.js')'
 }
-````
+```
 
 An easy way to get the correct syntax for your language is to use a convert. You can find one for just about any lang.
 Here are a few where you can copy/past the HTML representation and have it converted to your view engine of choice.

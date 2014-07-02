@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>{{_appName}} - {{err.status}} {{err.title}}</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" />
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,800' rel='stylesheet' type="text/css" />
+	<link href="/css/errors.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+    <header class="status-{{err.status}}">
+       <div class="container">
+           <div>
+               <div class="row">
+                   <div class="col-md-4 media-center">
+                       <img class="ninja" src="/img/shared/ninja.png"/>
+                   </div>
+                   <div class="col-md-8 text-center">
+                       <div class="status inset">{{err.status}}</div>
+                       <p class="title inset inset-sm">{{err.title}}!</p>
+					   
+                   </div>
+               </div>
+           </div>
+       </div>
+    </header>
+    <div class="content">
+        <div class="container text-center">
+		
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8">											
+					<p>{{err.message}} Sorry our Ninjas are probably working on it.</p>				
+					<p>
+						<a href="/" class="btn btn-{{err.status}} light" onclick="history.go(-1);" >← Previous Page</a>	
+						<a href="/" class="btn btn-{{err.status}}">Continue Home →</a>						
+					</p>
+					<a class="link" href="http://en.wikipedia.org/wiki/HTTP_{{err.status}}">What in the @!#? does {{err.status}} mean?</a>
+				</div>
+				<div class="col-md-2"></div>
+			</div>
+			
+			<div class="row">
+				<div class="col-md-2"></div>
+				<div class="col-md-8 text-left stack">	
+					<br/>
+					<p>{{err.stack}}</p>
+				</div>
+				<div class="col-md-2"></div>
+			</div>		
+
+        </div>
+    </div>
+    <footer>
+        <div class="container text-center">
+            {{{_copyright}}}
+        </div>
+    </footer>
+
+</body>
+</html>
