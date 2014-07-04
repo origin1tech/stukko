@@ -8,6 +8,7 @@
 - Change order of events on boot to make db connection accessible to user CLI.
 - Make Lodash global its used everywhere.
 - Remote upgrade features and updates folder, need to revisit at another time.
+- Add feature to pull updates directly from git master. see "stukko checkout".
 
 ###June 31, 2014
 - Remove upgrade until future release.
