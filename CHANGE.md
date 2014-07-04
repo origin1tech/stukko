@@ -1,5 +1,14 @@
 #Change Log
 
+###July 3, 2014 
+- Add hook to allow user app to create own command line methods.
+- Change assets builder to use Node spawn instead of fork.
+- Set assets when debugging to use different port so debugging works properly.
+- Change commands to object over simple array for filtering.
+- Change order of events on boot to make db connection accessible to user CLI.
+- Make Lodash global its used everywhere.
+- Remote upgrade features and updates folder, need to revisit at another time.
+
 ###June 31, 2014
 - Remove upgrade until future release.
 - Temporarily remove version checking. Will be added back in next version.
