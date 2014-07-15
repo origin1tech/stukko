@@ -13,7 +13,7 @@ camel, lower or pascal.
 
 MongoDB     -   [https://github.com/mongodb/node-mongodb-native](https://github.com/mongodb/node-mongodb-native)
 
-MySQL       -   [https://github.com/felixge/node-mysql](https://github.com/felixge/node-mysql)
+Sequelize   -   [https://github.com/sequelize/sequelize](https://github.com/sequelize/sequelize)
 
 Mongoose    -   [https://github.com/LearnBoost/mongoose](https://github.com/LearnBoost/mongoose)
 
@@ -21,104 +21,124 @@ Dirty       -   [https://github.com/felixge/node-dirty](https://github.com/felix
 
 ###Mongoose Example
 
-There are two was you can create a model. First you can simply export the model directly as you might have done in the past or you can return the model from a function so as to access Stukko's context.
+There are two ways you can create a model. First you can simply export the model directly as you might have done in the past or you can return the model from a function so as to access Stukko's context.
 
-<pre>
+<pre>   
     
-    /* Default
-    ***********/
+    /* With Context & Injection
+    *****************************/
     
-    var User = new DB.Schema({
-        firstName: String,
-        lastName: String,
-        email: String
-    });
-    
-    module.exports = DB.model('User', User);
-    
-    /* With Context
-    ****************/
-    
-    module.exports = function () {
-    
-        // access the Stukko context and perhaps
-        // grap some value from your app's package.json.
-        
-        var version = this.pkgapp.version;
-        
-        // do something with the version.
- 
-         var User = new DB.Schema({
+    module.exports = function(db) {
+
+        var Schema = db.Schema,
+            User;
+            
+        User = new Schema({
             firstName: String,
             lastName: String,
             email: String
         });
-            
-        return DB.model('User', User);
         
-    };
+        return Model('User', User);
+    }
+    
+    /* Using Global $DB Object
+    ****************************/
+        
+    var User = new $DB.Schema({
+        firstName: String,
+        lastName: String,
+        email: String
+    });
+        
+    module.exports = $DB.model('User', User);
+    
+</pre>
+
+###Sequelize Example
+
+Sequelize is an ORM for MySQL, MariaDB, PostgreSQL and SQLite. After specifying your connection options in your configuration
+along with your dialect, use the below example to create your models.
+
+<pre>
+    
+    /* Using Global $DB Object
+    ****************************/
+    
+    /* With Context & Injection
+    *****************************/
     
 </pre>
 
 ###MongoDB Example
 
 As with the mongoose example you can either export the collection directly or you can wrap in a function to access context. 
-You should also note that since MongoDB collections are rather simple and without schema you could also name your Model file simply "Models". 
-Then within the file create each collection then return the collections. You would then access your models as Models.User, Models.Blog and so on.
 
-<pre>
+<pre>   
 
-    /* Default
-    ****************/
-    
-    // yep it could be this simple.
-    module.exports = DB.connection.collection('User');
+    /* With Context & Injection
+    *****************************/
 
-    /* With Context
-    ****************/
-
-    module.exports = function () {
-    
-        var conn, collection;
-            
-        // get the MongoDB connection.
-        conn = DB.connection;
-        
+    module.exports = function (db) {
+  
         // create a new collection.
-        collection = conn.collection('User');
+        var User = db.collection('User');
         
-        // from here you may want to configure indexes
-        // or you may want to drop a collection using a promise then return etc.
-    
-        return collection;
-    }
-    
-    /* Multiple Collections
-    ************************/
-    
-    module.exports = function () {
-    
-        var conn, collections;
-            
-        // get the MongoDB connection.
-        conn = DB.connection;
-        
-        collections = {};
-        
-        // create a new collection.
-        collections.User = conn.collection('User');
-        collections.Note = conn.collection('Note');
-        
-        // the above collections would be accessed as 
-        // Model.User and Models.Note if the file they are contained
-        // in is named "models.js".  
-    
-        return collections;
+        // from here you may want to configure indexes & other features.
+  
+        return User;
     }    
+    
+     /* Using Global $DB Object
+     ****************************/
+        
+    // yep it could be this simple, just a simple collection.
+    module.exports = $DB.connection.collection('User');
+  
     
 </pre>
 
+###Dirty Example
 
+Dirty is just that a down and dirty key value in process database. It performs rather well and great for early development
+of your application. You can reliably use it in production for simple applications. With dirty there is no model or
+collection structure. You'll need to create your own but you might do something like the below just to give an idea.
+When using this type of database client you also may just want to simply set/get things in your controller using the
+Global $DB Object.
+
+<pre>   
+
+    /* With Context & Injection
+    *****************************/
+
+    module.exports = function (db) {
+    
+        // this class would likely be required obviously
+        // so as to be reusable but you get the idea.        
+        function Model(name, properties) {
+            // NOTE: Stukko will look for this property if provided.
+            // if not available it will use the filename when Stukko
+            // iterates your models.
+            this.name 
+            this.id = 1; // maybe use a Stukko service and generate a guid or something here.
+            this.properties = properties;
+           
+            // add methods here to do things like getting and setting etc.
+        }
+  
+        // create a new model.
+        // use standard JavaScript types.
+        var User = new Model('User', {
+            firstName: String,
+            lastName: String,
+            email: String
+        });
+  
+        return User;
+    }    
+  
+    
+</pre>
 
 
 

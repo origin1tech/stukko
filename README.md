@@ -299,6 +299,8 @@ Currently Stukko supports the following database engines:
 - [Sequelize](https://github.com/sequelize/sequelize)
 - [Redis](https://github.com/mranney/node_redis)
 
+See "Models" folder readme for connection documentation.
+
 
 
 
