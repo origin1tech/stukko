@@ -1,5 +1,4 @@
 #Middleware
-----
 
 Middlware directory contains all of your custom middleware handlers to be added to the Express stack.
 

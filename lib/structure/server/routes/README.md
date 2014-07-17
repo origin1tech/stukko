@@ -1,5 +1,4 @@
 #Routes
-----
 
 Routes are extremely powerful. You can route to a controller, redirect a url, render a view directly and even specify security policies to validate against along the way.
 

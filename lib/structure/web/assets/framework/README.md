@@ -1,5 +1,4 @@
 #Framework
-----
 
 The framework directory is where you would create your client-side framework application.
 

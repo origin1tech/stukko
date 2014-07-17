@@ -1,5 +1,4 @@
 #Assets
-----
 
 Assets are just that, assets that make your application do all the cool stuff it does. See individual folders for more
 detailed README.

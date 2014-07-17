@@ -1,5 +1,4 @@
 #Mixin
-----
 
 The mixin folder will concatenate your files into a single file called mixin.css and/or mixin.js respectively.
 

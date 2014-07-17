@@ -1,5 +1,4 @@
 #Security
-----
 
 Security modules are nothing more than middleware really. The only difference is they are merged
 with controllers for the purpose exposing them to routes.

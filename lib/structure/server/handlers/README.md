@@ -1,5 +1,4 @@
 #Handlers
-----
 
 Handlers are similar to a controller in that they handle a final action. Essentially they return a response.
 

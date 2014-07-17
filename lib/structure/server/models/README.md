@@ -1,5 +1,4 @@
 #Models
-----
 
 Models are used to expose your models/collections to your controllers and so on. Models can be created in several ways.
 With that said creating a model/collection is done exactly the same as the database engine driver specifies.
@@ -60,13 +59,103 @@ There are two ways you can create a model. First you can simply export the model
 Sequelize is an ORM for MySQL, MariaDB, PostgreSQL and SQLite. After specifying your connection options in your configuration
 along with your dialect, use the below example to create your models.
 
-<pre>
+<pre>        
+    
+    /* With Context & Injection
+    *****************************/
+    
+    module.exports = function (db, types) {
+        
+        var Model;
+        
+        Model = db.define('User', {
+    
+            first_name: { type: types.STRING },
+            last_name: { type: types.STRING },
+            email: { type: types.STRING }
+    
+        },
+    
+        {
+  
+            // Defines associations.
+            associate: function (models){
+                Model.belongsTo(models.Group);
+            }
+    
+            // Defines getters for model properties.
+            //getterMethods: {},
+    
+            // Defines setters for model properties.
+            //setterMethods: {},
+    
+            // Defines associations and class methods.
+            //classMethods: { associate: function (models) { } },
+    
+            // Defines methods for "this" instance of the model.
+            //instanceMethods: {},
+    
+            // Defines before/after hooks for a model.
+            // NOTE the below hooks all have "Bulk" counter parts
+            // Hooks: beforeCreate, afterCreate, beforeUpdate, afterUpdate,
+            //        beforeValidate, afterValidate, beforeDestroy, afterDestroy
+            //hooks: {}
+    
+        });
+    
+        return Model;
+        
+    };
+    
     
     /* Using Global $DB Object
     ****************************/
     
-    /* With Context & Injection
-    *****************************/
+    module.exports = function () {
+            
+        var Model, db, types;
+        
+        db = $DB.connection;
+        types = $DB.client;
+        
+        Model = db.define('User', {
+    
+            first_name: { type: types.STRING },
+            last_name: { type: types.STRING },
+            email: { type: types.STRING }
+    
+        },
+    
+        {
+  
+            // Defines associations.
+            associate: function (models){
+                Model.belongsTo(models.Group);
+            }
+    
+            // Defines getters for model properties.
+            //getterMethods: {},
+    
+            // Defines setters for model properties.
+            //setterMethods: {},
+    
+            // Defines associations and class methods.
+            //classMethods: { associate: function (models) { } },
+    
+            // Defines methods for "this" instance of the model.
+            //instanceMethods: {},
+    
+            // Defines before/after hooks for a model.
+            // NOTE the below hooks all have "Bulk" counter parts
+            // Hooks: beforeCreate, afterCreate, beforeUpdate, afterUpdate,
+            //        beforeValidate, afterValidate, beforeDestroy, afterDestroy
+            //hooks: {}
+    
+        });
+    
+        return Model;
+        
+    };
     
 </pre>
 

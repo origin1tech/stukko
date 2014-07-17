@@ -1,5 +1,4 @@
 #Minify
-----
 
 Minify will minify your .js or .css files automatically and output them to /public/js & /public/css respectively.
 

@@ -1,5 +1,14 @@
 #Change Log
 
+###July 16, 2014
+- fix issue where model associations were not created when using Sequelize.
+- add ability to seed data after model creation during development.
+- update several README.md files.
+- add feature where any flag passed on start can temporarily overwrite running config.
+- change model creation for Sequelize.
+- simplified initial config options.
+- add feature where any config option can be toggled, saved on start from command line.
+
 ###July 3, 2014 
 - Add hook to allow user app to create own command line methods.
 - Change assets builder to use Node spawn instead of fork.

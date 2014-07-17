@@ -1,5 +1,4 @@
 #Controllers
-----
 
 Controllers are used to render data or expose data to your application.
 
