@@ -2,7 +2,7 @@
 
 ##Pre-Release
 
-This is a pre-release. Using in production should be done with caution.
+This is a pre-release. Using in production should be done with caution. Running changes make break your application.
 
 ##Express MVC Web Framework.
 

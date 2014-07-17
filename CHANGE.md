@@ -1,5 +1,9 @@
 #Change Log
 
+###July 17, 2014
+- resolve issue where all defaults were not merged.
+- ensure that seeds run only when models are present. Excludes Redis and Dirty.
+
 ###July 16, 2014
 - fix issue where model associations were not created when using Sequelize.
 - add ability to seed data after model creation during development.
