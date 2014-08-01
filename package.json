@@ -12,6 +12,7 @@
   },
   "test": "echo \"Error: no test specified\" && exit 1",
   "dependencies": {
+    "bluebird": "^2.2.2",
     "body-parser": "^1.4.3",
     "chance": "^0.5.8",
     "colors": "^0.6.2",
