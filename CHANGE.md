@@ -1,5 +1,8 @@
 #Change Log
 
+### August 3, 2014
+- add browserify support.
+
 ###July 17, 2014
 - resolve issue where all defaults were not merged.
 - ensure that seeds run only when models are present. Excludes Redis and Dirty.
