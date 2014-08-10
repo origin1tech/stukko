@@ -1,5 +1,12 @@
 #Change Log
 
+### August 7, 2014
+- move assets.framework to assets.bundle.framework to better support general concatenation & browserify.
+- moved browserify support from within "framework" to bundle.
+- removed backup/restore just not needed as anticipated.
+- all assets other than link now support enable/disable of watch rather than globally.
+- update gulp file change "framework" task to generic "bundle".
+
 ### August 3, 2014
 - add browserify support.
 
