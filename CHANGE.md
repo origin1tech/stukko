@@ -1,5 +1,9 @@
 #Change Log
 
+### August 12, 2014
+- add exclude to "clean" to maintain static dir between builds.
+- remove $$SETTINGS from inject middleware security risk let user define.
+
 ### August 7, 2014
 - move assets.framework to assets.bundle.framework to better support general concatenation & browserify.
 - moved browserify support from within "framework" to bundle.
