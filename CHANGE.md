@@ -1,5 +1,10 @@
 #Change Log
 
+### September 4, 2014
+- fix Sequelize dialect connection issue.
+- resolve issue where database name is not shown correctly in diagnostics/bootup.
+- prevent some Sequelize dialects from calling constraint fix.
+
 ### August 12, 2014
 - add exclude to "clean" to maintain static dir between builds.
 - remove $$SETTINGS from inject middleware security risk let user define.
