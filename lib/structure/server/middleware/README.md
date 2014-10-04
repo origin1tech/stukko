@@ -60,3 +60,26 @@ If it finds the module successfully it is required and any options provided are 
     }
 </pre>
 
+###Order of Default Middlware
+
+The built in middlware modules are merged with your custom middlware. To assure proper order within
+the stack please take note of the default modules ordering. Unless you specify an order in your middleware
+it will be sorted after "inject" below. 
+
+NOTE: custom middlware order if not specified increases by 1 whereas default middleware increases by a 
+rate of 5 to ensure gaps for inserting custom middleware before/after a default middlware module.
+
+morgan              0
+encodedParser       5
+jsonParser          10
+cookieParser        15
+session             20
+methodOverride      25
+csrf                30
+cors                35
+i18n                40
+public              45
+views               50
+favicon             55
+inject              60
+
