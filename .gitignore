@@ -4,6 +4,7 @@ node_modules/
 /lib/structure/.tmp
 /lib/structure/.backup
 /lib/structure/logs/*.*
+npm-debug.log
 .log
 server.js
 server
