@@ -1,85 +1,122 @@
 0 info it worked if it ends with ok
-1 verbose cli [ 'D:\\Program Files\\nodejs\\\\node.exe',
-1 verbose cli   'D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
-1 verbose cli   'install',
-1 verbose cli   'express@4.4.9',
-1 verbose cli   '--save' ]
+1 verbose cli [ 'C:\\Program Files\\nodejs\\\\node.exe',
+1 verbose cli   'C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'link' ]
 2 info using npm@1.4.28
-3 info using node@v0.10.32
-4 verbose node symlink D:\Program Files\nodejs\\node.exe
-5 warn package.json dirty@0.9.9 No repository field.
-6 verbose readDependencies using package.json deps
-7 verbose cache add [ 'express@4.4.9', null ]
-8 verbose cache add name=undefined spec="express@4.4.9" args=["express@4.4.9",null]
-9 verbose parsed url { protocol: null,
-9 verbose parsed url   slashes: null,
-9 verbose parsed url   auth: null,
-9 verbose parsed url   host: null,
-9 verbose parsed url   port: null,
-9 verbose parsed url   hostname: null,
-9 verbose parsed url   hash: null,
-9 verbose parsed url   search: null,
-9 verbose parsed url   query: null,
-9 verbose parsed url   pathname: 'express@4.4.9',
-9 verbose parsed url   path: 'express@4.4.9',
-9 verbose parsed url   href: 'express@4.4.9' }
-10 verbose cache add name="express" spec="4.4.9" args=["express","4.4.9"]
-11 verbose parsed url { protocol: null,
-11 verbose parsed url   slashes: null,
-11 verbose parsed url   auth: null,
-11 verbose parsed url   host: null,
-11 verbose parsed url   port: null,
-11 verbose parsed url   hostname: null,
-11 verbose parsed url   hash: null,
-11 verbose parsed url   search: null,
-11 verbose parsed url   query: null,
-11 verbose parsed url   pathname: '4.4.9',
-11 verbose parsed url   path: '4.4.9',
-11 verbose parsed url   href: '4.4.9' }
-12 verbose addNamed [ 'express', '4.4.9' ]
-13 verbose addNamed [ '4.4.9', '4.4.9' ]
-14 silly lockFile 1e505792-express-4-4-9 express@4.4.9
-15 verbose lock express@4.4.9 C:\Users\chazelton\AppData\Roaming\npm-cache\1e505792-express-4-4-9.lock
-16 verbose request where is /express
-17 verbose request registry https://registry.npmjs.org/
-18 verbose request id 6631fdaac4f08deb
-19 verbose url raw /express
-20 verbose url resolving [ 'https://registry.npmjs.org/', './express' ]
-21 verbose url resolved https://registry.npmjs.org/express
-22 verbose request where is https://registry.npmjs.org/express
-23 info trying registry request attempt 1 at 12:05:32
-24 verbose etag "EBLMBTC8RK3ZNKKMP7G4S10E4"
-25 http GET https://registry.npmjs.org/express
-26 http 304 https://registry.npmjs.org/express
-27 silly registry.get cb [ 304,
-27 silly registry.get   { date: 'Wed, 29 Oct 2014 19:05:36 GMT',
-27 silly registry.get     server: 'Apache',
-27 silly registry.get     via: '1.1 varnish',
-27 silly registry.get     'last-modified': 'Wed, 29 Oct 2014 19:05:36 GMT',
-27 silly registry.get     'cache-control': 'max-age=60',
-27 silly registry.get     etag: '"EBLMBTC8RK3ZNKKMP7G4S10E4"',
-27 silly registry.get     age: '0',
-27 silly registry.get     'x-served-by': 'cache-lax1421-LAX',
-27 silly registry.get     'x-cache': 'HIT',
-27 silly registry.get     'x-cache-hits': '1',
-27 silly registry.get     'x-timer': 'S1414609536.651580,VS0,VE73',
-27 silly registry.get     vary: 'Accept',
-27 silly registry.get     'content-length': '0',
-27 silly registry.get     'keep-alive': 'timeout=10, max=50',
-27 silly registry.get     connection: 'Keep-Alive' } ]
-28 verbose etag https://registry.npmjs.org/express from cache
-29 silly lockFile 1e505792-express-4-4-9 express@4.4.9
-30 silly lockFile 1e505792-express-4-4-9 express@4.4.9
-31 error Error: version not found: express@4.4.9
-31 error     at D:\Program Files\nodejs\node_modules\npm\lib\cache\add-named.js:125:12
-31 error     at saved (D:\Program Files\nodejs\node_modules\npm\node_modules\npm-registry-client\lib\get.js:167:7)
-31 error     at Object.oncomplete (fs.js:107:15)
-32 error If you need help, you may report this *entire* log,
-32 error including the npm and node versions, at:
-32 error     <http://github.com/npm/npm/issues>
-33 error System Windows_NT 6.2.9200
-34 error command "D:\\Program Files\\nodejs\\\\node.exe" "D:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "install" "express@4.4.9" "--save"
-35 error cwd D:\Projects\WebNode\stukko
-36 error node -v v0.10.32
-37 error npm -v 1.4.28
-38 verbose exit [ 1, true ]
+3 info using node@v0.10.35
+4 verbose node symlink C:\Program Files\nodejs\\node.exe
+5 verbose linkPkg D:\Projects\WebNode\stukko
+6 verbose link build target C:\Users\Carey\AppData\Roaming\npm\node_modules\stukko
+7 verbose install where,what [ 'D:\\Projects\\WebNode\\stukko', [] ]
+8 verbose readDependencies using package.json deps
+9 verbose install where, deps [ 'D:\\Projects\\WebNode\\stukko',
+9 verbose install   [ 'bluebird',
+9 verbose install     'body-parser',
+9 verbose install     'chance',
+9 verbose install     'cli-spinner',
+9 verbose install     'colors',
+9 verbose install     'consolidate',
+9 verbose install     'cookie-parser',
+9 verbose install     'cors',
+9 verbose install     'csurf',
+9 verbose install     'debug',
+9 verbose install     'dirty',
+9 verbose install     'express',
+9 verbose install     'express-session',
+9 verbose install     'fs-extra',
+9 verbose install     'hamljs',
+9 verbose install     'hogan.js',
+9 verbose install     'i18n',
+9 verbose install     'jade',
+9 verbose install     'lodash',
+9 verbose install     'method-override',
+9 verbose install     'moment',
+9 verbose install     'morgan',
+9 verbose install     'npm',
+9 verbose install     'optimist',
+9 verbose install     'prompt',
+9 verbose install     'serve-favicon',
+9 verbose install     'stukko-dirty',
+9 verbose install     'winston',
+9 verbose install     'chai',
+9 verbose install     'mocha' ] ]
+10 info preinstall stukko@1.5.3
+11 warn package.json dirty@0.9.9 No repository field.
+12 verbose readDependencies using package.json deps
+13 verbose already installed skipping i18n@^0.5.0 D:\Projects\WebNode\stukko
+14 verbose already installed skipping jade@^1.3.1 D:\Projects\WebNode\stukko
+15 verbose already installed skipping lodash@^2.4.1 D:\Projects\WebNode\stukko
+16 verbose already installed skipping method-override@^2.3.0 D:\Projects\WebNode\stukko
+17 verbose already installed skipping moment@^2.7.0 D:\Projects\WebNode\stukko
+18 verbose already installed skipping morgan@^1.4.1 D:\Projects\WebNode\stukko
+19 verbose already installed skipping npm@^1.5.0-alpha-4 D:\Projects\WebNode\stukko
+20 verbose already installed skipping optimist@^0.6.1 D:\Projects\WebNode\stukko
+21 verbose already installed skipping prompt@^0.2.13 D:\Projects\WebNode\stukko
+22 verbose already installed skipping serve-favicon@^2.1.6 D:\Projects\WebNode\stukko
+23 verbose cache add [ 'stukko-dirty@git+https://github.com/origin1tech/stukko-dirty',
+23 verbose cache add   null ]
+24 verbose cache add name=undefined spec="stukko-dirty@git+https://github.com/origin1tech/stukko-dirty" args=["stukko-dirty@git+https://github.com/origin1tech/stukko-dirty",null]
+25 verbose parsed url { protocol: null,
+25 verbose parsed url   slashes: null,
+25 verbose parsed url   auth: null,
+25 verbose parsed url   host: null,
+25 verbose parsed url   port: null,
+25 verbose parsed url   hostname: null,
+25 verbose parsed url   hash: null,
+25 verbose parsed url   search: null,
+25 verbose parsed url   query: null,
+25 verbose parsed url   pathname: 'stukko-dirty@git+https://github.com/origin1tech/stukko-dirty',
+25 verbose parsed url   path: 'stukko-dirty@git+https://github.com/origin1tech/stukko-dirty',
+25 verbose parsed url   href: 'stukko-dirty@git+https://github.com/origin1tech/stukko-dirty' }
+26 verbose already installed skipping winston@^0.7.3 D:\Projects\WebNode\stukko
+27 verbose already installed skipping chai@^1.9.1 D:\Projects\WebNode\stukko
+28 verbose already installed skipping mocha@^1.20.1 D:\Projects\WebNode\stukko
+29 verbose cache add name="stukko-dirty" spec="git+https://github.com/origin1tech/stukko-dirty" args=["stukko-dirty","git+https://github.com/origin1tech/stukko-dirty"]
+30 verbose parsed url { protocol: 'git+https:',
+30 verbose parsed url   slashes: true,
+30 verbose parsed url   auth: null,
+30 verbose parsed url   host: 'github.com',
+30 verbose parsed url   port: null,
+30 verbose parsed url   hostname: 'github.com',
+30 verbose parsed url   hash: null,
+30 verbose parsed url   search: null,
+30 verbose parsed url   query: null,
+30 verbose parsed url   pathname: '/origin1tech/stukko-dirty',
+30 verbose parsed url   path: '/origin1tech/stukko-dirty',
+30 verbose parsed url   href: 'git+https://github.com/origin1tech/stukko-dirty' }
+31 silly lockFile 6e655af8-hub-com-origin1tech-stukko-dirty https://github.com/origin1tech/stukko-dirty
+32 verbose lock https://github.com/origin1tech/stukko-dirty C:\Users\Carey\AppData\Roaming\npm-cache\6e655af8-hub-com-origin1tech-stukko-dirty.lock
+33 verbose addRemoteGit [ 'https://github.com/origin1tech/stukko-dirty', 'master' ]
+34 verbose already installed skipping bluebird@^2.3.10 D:\Projects\WebNode\stukko
+35 verbose already installed skipping body-parser@^1.9.2 D:\Projects\WebNode\stukko
+36 verbose already installed skipping chance@^0.5.9 D:\Projects\WebNode\stukko
+37 verbose already installed skipping cli-spinner@^0.1.5 D:\Projects\WebNode\stukko
+38 verbose already installed skipping colors@^0.6.2 D:\Projects\WebNode\stukko
+39 verbose already installed skipping consolidate@^0.10.0 D:\Projects\WebNode\stukko
+40 verbose already installed skipping cookie-parser@^1.3.2 D:\Projects\WebNode\stukko
+41 verbose already installed skipping cors@^2.5.0 D:\Projects\WebNode\stukko
+42 verbose already installed skipping csurf@^1.6.2 D:\Projects\WebNode\stukko
+43 verbose already installed skipping debug@^1.0.4 D:\Projects\WebNode\stukko
+44 verbose already installed skipping dirty@^0.9.9 D:\Projects\WebNode\stukko
+45 verbose already installed skipping express@^4.10.1 D:\Projects\WebNode\stukko
+46 verbose already installed skipping express-session@^1.6.1 D:\Projects\WebNode\stukko
+47 verbose already installed skipping fs-extra@^0.12.0 D:\Projects\WebNode\stukko
+48 verbose already installed skipping hamljs@^0.6.2 D:\Projects\WebNode\stukko
+49 verbose already installed skipping hogan.js@^3.0.2 D:\Projects\WebNode\stukko
+50 warn `git config --get remote.origin.url` returned wrong result (https://github.com/origin1tech/stukko-dirty) undefined
+50 warn `git config --get remote.origin.url` returned wrong result (https://github.com/origin1tech/stukko-dirty) undefined
+51 error git clone https://github.com/origin1tech/stukko-dirty undefined
+51 error git clone https://github.com/origin1tech/stukko-dirty undefined
+52 silly lockFile 6e655af8-hub-com-origin1tech-stukko-dirty https://github.com/origin1tech/stukko-dirty
+53 silly lockFile 6e655af8-hub-com-origin1tech-stukko-dirty https://github.com/origin1tech/stukko-dirty
+54 error not found: git
+55 error Failed using git.
+55 error This is most likely not a problem with npm itself.
+55 error Please check if you have git installed and in your PATH.
+56 error System Windows_NT 6.2.9200
+57 error command "C:\\Program Files\\nodejs\\\\node.exe" "C:\\Program Files\\nodejs\\node_modules\\npm\\bin\\npm-cli.js" "link"
+58 error cwd D:\Projects\WebNode\stukko
+59 error node -v v0.10.35
+60 error npm -v 1.4.28
+61 error code ENOGIT
+62 verbose exit [ 1, true ]
