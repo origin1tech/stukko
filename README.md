@@ -217,36 +217,86 @@ module.exports = {
 
 **Bundling Assets**
 
-Stukko will bundle your assets in the defined folders to be watched. The properties of the assets object within your
+Stukko will bundle your assets in the defined folders to be watched/cleaned. The properties of the assets object within your
 options configuration are explained below. Assets are generally output to /web/public followed by the extension name
-of the file. For example mixins that are javascript will be output to /web/public/js.
+of the file. For example scripts that are javascript will be output to /web/public/js.
 
-+ **clean** when true cleans your public directory before building the application, typically in /web/public.
+Bundling is somewhat agnostic in that you can define as many bundling tasks as you wish. By default the following
+tasks are predefined:
 
-+ **watch** when true your /web/assets directory is watched live for changed and will re+process or re+build your
-        application when a change is detected. NOTE files that are added or deleted currently do not get built. You'll
-        need to manually restart for those instances. Additionally we've decided not to link assets that are newly created. 
-        You'll need to reload your project manually. There are sound reasons not to do this. We may revisit this in the 
-        future.
-         
-+ **link** see below
++*styles*       - bundles css stylesheets
++*scripts*      - bundles scripts.
++*framework*    - bundles your framework logic.
++*views*        - bundles views for html minification.
 
-+ **mixin** Concatenates all files and files within sub folders to a single file by the name you define in the concat
-        property. This is good for common things, utilities and the like that don't need to be in separate directories.
-        
-+ **minify** This folder when output maintains the defined file structure when output to /web/public/js or /web/public/css
-         respectively. NOTE that when in development mode these files will merely be copied to the output location.
-         This is because debugging unminified files makes more sense when developing. When you run your project in 
-         "production" mode these files will be automatically minified as you'd expect.
-         
-+ **preprocess** Processes less and sass files. Only the root files are processessed. All dependency files should be imported
-             into your root theme file.
+There are several options for bundling some common configurations, see configuration options for more details.
 
-+ **framework** This defines how to watch/build your client+side frameworks such as AngularJS, Backbone, Ember and the like.
-            all files in this directory will be concatenated into a single file by the name you define in the concat
-            property.
-
-
+```json
+"styles": {
+    "strategy": "copy",
+    "watch": "./web/assets/styles/**/*.scss",
+    "minify": false,
+    "clean": true,
+    "cleanAppend": "/**/*.css",
+    "src": [
+        "./web/assets/styles/*.scss"
+    ],
+    "dest": "./web/public/css",
+    "options": {}
+},
+"framework": {
+    "strategy": "es6",
+    "watch": true,
+    "minify": false,
+    "clean": true,
+    "cleanAppend": "/**/*.js",
+    "src": [
+        "./web/assets/framework/**/*.js"
+    ],
+    "dest": "./web/public/js/app",
+    "options": {
+        "modules": "amd"
+    }
+},
+"scripts": {
+    "strategy": "copy",
+    "watch": true,
+    "minify": false,
+    "clean": true,
+    "cleanAppend": "/**/*.js",
+    "src": [
+        "!./web/assets/scripts/mixins/**/*.js",
+        "./web/assets/scripts/**/*.js"
+    ],
+    "dest": "./web/public/js",
+    "options": {}
+},
+"scripts-mixins": {
+    "strategy": "concat",
+    "watch": true,
+    "minify": false,
+    "clean": true,
+    "cleanAppend": "/**/*.js",
+    "as": "mixins.js",
+    "src": [
+        "./web/assets/scripts/mixins/**/*.js"
+    ],
+    "dest": "./web/public/js/app",
+    "options": {}
+},
+"bower-components": {
+    "strategy": "bower",
+    "watch": false,
+    "minify": false,
+    "clean": true,
+    "cleanAppend": "/**/*.*",
+    "componentPath": "./web/assets/bower_components",
+    "preserveStructure": true,
+    "src": [],
+    "dest": "./web/public/js/vendor",
+    "options": {}
+}
+```
 
 **Asset Linking**
 
@@ -255,14 +305,12 @@ files automatically. This is invaluable and prevents the need to restart your ap
 are also watched live.
 
 You shouldn't need to modify these settings in your options unless you are changing paths. However one of the key
-things to consider is how it is structured. You have two main configurations. The "Common" object and the "Application"
-object. Common is as you'd expect, they are files that are more or less dependencies your application needs to run. 
-The Application object would be assets that **MUST** be included in your layout file after the common assets.
+things to consider is how it is structured. 
 
 You'll notice in "layout.html" that there are sections for styles and javascript that look like:
 
 ```
-<!-- inject:common:js-->
+<!-- inject:js-->
 <!-- endinject -->
 ```
 
@@ -271,7 +319,7 @@ pure html markup for its rendering. Such as EJS, Hogan and so on. The default en
 [Hogan](http://twitter.github.io/hogan.js/). The very engine created by [Twitter](https://dev.twitter.com/).
 
 If you wish to use a view engine that does not use html for its markup such as [Jade](http://jade-lang.com/), your
-start and end tags withing "common" or "application" would look like the below:
+start and end tags would look like the below:
 
 ```
 {
@@ -300,6 +348,379 @@ Currently Stukko supports the following database engines:
 - [Redis](https://github.com/mranney/node_redis)
 
 See "Models" folder readme for connection documentation.
+
+**Configuration Options**
+
+You can have as many configurations as you wish. By default "development" and "production" are used based on your 
+current environment. However if you wish to start using a different configuration you may do so as follows:
+
+This would start the project using the "laptop.json" config withing /server/configuration. You might use a config
+such as this to support remote connection settings to your database.
+
+```sh
+$ stukko start --config laptop
+```
+
+Full list of configuration options.
+
+```json
+'use strict';
+
+module.exports = function () {
+
+	var self = this;
+
+	return  {
+
+        // base configuration settings for your application.
+        // PROPERTIES
+        //      version:                        (default: undefined) the version of Stukko requried.
+        //      env:                            (default: 'development') the node environment to load.
+        //      host:                           (default: see below) the hose the server should listen on.
+        //      port:                           (default: see below) the port the server is to listen on.
+        //                                                           common env vars are provided remove in
+        //                                                           config as desired.
+        //      ssl:                            (default: undefined)  ssl is an object consisting of
+        //                                                            { '/key: 'path/to/key', cert: '/path/to/cert' }
+        //      browser:                        (default: false) when true your default browser is openned on start.
+		version: undefined,
+		env: process.env.NODE_ENV || 'development',
+		host: process.env.IP || process.env.HOSTNAME || 'localhost',
+		port: process.env.PORT || process.env.VCAP_APP_PORT || 1337,
+		ssl: undefined,
+        browser: false,
+
+        // defines what types of status errors to handle.
+        // PROPERTIES
+        //      404:                            (default: true) usually true, set to false when using a SPA
+        //                                                      and handling routes client side. probably want to
+        //                                                      set catchAll to "true" also.
+        //      500:                            (default: true) almost always true, handles typical/unknown exceptions.
+        statusErrors: {
+            404: true,
+            500: true
+        },
+
+        // PROPERTIES
+        //      catchAll:                       (default: false) when true a catch all route that resolves
+        //                                                       layout is used. used to not throw 404 when valid
+        //                                                       client side routes exists in a SPA.
+        //      logo:                           (default: true) when true display the Stukko logo when booting.
+        catchAll: false,
+		logo: true,
+
+        // db property configures your database and specified which
+        // module to be used on init.
+        // PROPERTIES
+        //      module:                         (default: 'dirty') the database module used for your app.
+        //      modelCase:                      (default: 'capitalize') the casing of the get name options are
+        //                                                              'capitalize, upper, lower, camel, pascal'.
+        //      globalize:                      (default: true) sets models to GLOBAL namespace ex: $User.
+        //      modelPrefix:                    (default: $) models are exposed globally hence a prefix is a good idea.
+        //      connect:                        (default: true) when true creates/opens default connection otherwise
+        //                                                      only returns db client for custom connections or
+        //                                                      multiple connections
+        //      load:                           (default: true) when true Models are loaded and exposed globally.
+        //                                                      If using Sequelize set to false for migrations.
+        //      drop:                           (default: true) applies only to Sequelize, causes models to be
+        //                                                      dropped then recreated to apply changes, no effect
+        //                                                      when "load" is false.
+        //      seed:                           (default: false) applies to Sequelize, when true any seeds in
+        //                                                       /server/seeds will be processed, drop/load must be set
+        //                                                       to true if using Sequelize.
+        db: {
+			module: 'dirty',
+			modelCase: 'capitalize',
+            globalize: true,
+            modelPrefix: '$',
+            connect: true,
+		    load: true,
+            drop: true,
+            seed: false
+        },
+
+        // Stukko uses Express to server up pages.
+        // the below configure the Express instance.
+        // PROPERTIES
+        //      layout:                         (default: 'layout') the default layout name without extension to render.
+        //      engine:                         (default: 'hogan') the view engine use to render views.
+        //      view engine:                    (default: 'html') seems redundant but isn't, this is the extension for your views.
+        //      views:                          (default: '/web/views') the location where your views are located.
+        //      jsonp callback name:            (default: 'callback') when jsonp is used this is the callback name.
+		express: {
+			layout: 'layout',
+			engine: 'hogan',
+			'view engine': 'html',
+			views: '/web/views',
+			'jsonp callback name': 'callback'
+		},
+
+        // Modules are the paths that Stukko relies on to initialize your app.
+        // see README.md in each path below for
+        // specific use of these directories.
+		modules: {
+            services: '/server/services',
+            models: '/server/models',
+            seeds: '/server/seeds',
+			policies: '/server/security/policies',
+            filters: '/server/security/filters',
+			middleware: '/server/middleware',
+			handlers: '/server/handlers',
+			controllers: '/server/controllers',
+			routes: '/server/routes'
+		},
+        // Modules Filter is a regular expression
+        // for the purpose of filtering what files
+        // are processed by Stukko.
+        // ex: (.+)\.js$ would include all .js files.
+        // default ex: ^[^_](.+)\.js$ would include all .js files
+        //      while excluding any that start with _
+        modulesFilter: '^[^_](.+)\\.js$',
+
+        // this configures auto generated routing for the application.
+        // to use this feature default controllers MUST be defined
+        // in your /server/controllers/base directory. See README.md
+        // for configuration examples.
+        // PROPERTIES:
+        //      crud:                           (default: false) when true crud routes are generated
+        //      rest:                           (default: true) when true REST routes are gernerated.
+        //      prefix:                         (default: 'api') the prefix used for rest routes.
+        //      models:                         (default: true) when true routes are generated for models.
+        //      controllers:                    (default: true) when true routes are generated for controllers.
+        //      baseController:
+        //          name:                       (default: 'base') the base controller name used for generated routes.
+        //
+        //          NOTE: the below action names are only used for REST routes.
+        //                for CRUD routes each action is generated as a route using
+        //                the key name of the action or is override when "as" is present.
+        //                see base controller template in /server/controllers.
+        //
+        //          findAll:                    (default: 'findAll') the findAll action name.
+        //          find: 'find':               (default: 'find') the find action name.
+        //          create: 'create':           (default: 'create') the create action name.
+        //          update: 'update':           (default: 'update') the update action name.
+        //          destroy: 'destroy:          (default: 'destroy') the destroy (del) action name to use.
+        //
+        routing: {
+            crud: false,
+            rest: true,
+            restPrefix: 'api',
+            models: true,
+            controllers: true,
+            baseController: {
+                name: 'base',
+                findAll: 'findAll',
+                find: 'find',
+                create: 'create',
+                update: 'update',
+                destroy: 'destroy'
+            }
+        },
+
+        // paths where user cli files and user defined
+        // templates are located when using sequelize-cmd
+        // migrations for sequelize. see README.md.
+        // PROPERTIES
+        //      cli:                            (default: '/cli') the path where user defined cli methods are defined.
+        //      templates:                      (default: '/templates') the path where user defined templates
+        //                                                              for migrations are stored.
+        cli: '/cli',
+        templates: '/templates',
+
+        // see README.md in "/server/middleware" for detailed
+        // explanation on the below middleware and their
+        // respective configurations.
+		middleware: {
+			morgan: { use: 'morgan'	},
+			encodedParser: { use: '{{internal}}/middleware/encodedParser' },
+			jsonParser: { use: '{{internal}}/middleware/jsonParser'	},
+			cookieParser: {	use: 'cookie-parser' },
+			session: {
+				use: 'express-session', options: {
+					module: 'memory',
+                    mongooseConnection: false,                 //(default: false) when true if db.connection exists
+                                                               // use it. only valid for connect-mongo && mongoose!
+                    resave: true,
+                    saveUninitialized: true
+				}
+			},
+			methodOverride: { use: 'method-override' },
+			csrf: {	use: 'csurf', enabled: false },
+			cors: {	use: 'cors', enabled: false },
+			i18n: {	use: 'i18n', enabled: false	},
+			"public": {	use: 'express.static', options: '/web/public' },
+			views: { use: 'express.static', options: '/web/views' },
+			favicon: {
+				enabled: false,
+				use: 'serve-favicon',
+				options: '/web/public/img/shared/favicon.ico'
+			},
+			inject: { use: '{{internal}}/middleware/inject'	}
+		},
+
+        // this property defines your application's logging behavior
+        // PROPERTIES
+        //      path:                   (default: '/logs') the output path for logs.
+        //      level:                  (default: 'info') the default logging level.
+        //      transports:             (default: undefined) an object containing additional transport configs.
+        //      example transport:      { file: { level: 'info', prettyPrint: true } }
+        logs: {
+            path: '/logs',
+            level: 'info',
+            transports: undefined
+        },
+
+        // locals are rendered in res.locals of express.
+        // they are also rendered as strings for accessing in JavaScript.
+        // by using dot notation the properties to include can be found
+        // so as to be included in res.locals.package & res.locals.config
+        // respectively. also created are res.locals.packageStr & res.locals.confgStr
+        // to access the strings in your view if using hogan you would do {{&packageStr}}
+        // this would result in converting this back to an object.
+        // PROPERTIES
+        //      package:                    (default: see below) properties to be included in res.locals.package.
+        //      config:                     (default: []) properties from this config to be incl. in res.locals.confg
+        //      example:                    ['dependencies.stukko'] would result in res.locals.package.dependencies.stukko
+        locals: {
+            'package': [
+                'name',
+                'description',
+                'version',
+                'copyright',
+                'displayName'
+            ],
+            config: [
+                'env'
+            ]
+        },
+
+        // assets are your support files for your project that are
+        // bundled, minified compressed and linked.
+        // PROPERTIES
+        //      enabled:                    (default: true) when true all asset actions are processed.
+        //      livereload:                 (default: false) whether to enable livereload.
+        //      livereloadInterval:         (default: 200) watches for bundle task "done".
+        //                                                  and asset linking has completed. disabling may
+        //                                                  result in an error when using livereload.
+        assets: {
+			enabled: true,
+            livereload: false,
+            livereloadInterval: 200,
+
+            // bundles are groups of files that our processed for concatenation,
+            // browserify or simply copied to an output destination. these
+            // files when applicable can be minified as well based on file type.
+            // ALL paths are relative to the root of your application.
+            // IMPORTANT "views" must be last bundle.
+            // PROPERTIES:
+            //      strategy:               (default: undefined) concat, copy, bower, es6(using 6to5), and browserify.
+            //                                                   concat: concatenates files and ouputs "as" defined to dest.
+            //                                                          concat can also process less and sass files
+            //                                                          after concatenation.
+            //                                                   copy: simply copies from source to dest no other process.
+            //                                                   bower: gets bower main files/outputs to dest.
+            //                                                   browserify: client side require utility.
+            //                                                   es6: compiles es5 to es5.
+            //      minify:                 (default: undefined) valid when using "copy", "concat" or "browserify".
+            //      options:                (default: undefined) options that can be specified for browserify and concat.
+            //      header:                 (default: undefined) only applies when using concat. the header to be
+            //                                                   added to the top of the concatenated file.
+            //      footer:                 (default: undefined) only applies when using concat. the footer to be
+            //                                                   added to end of concatenated file.
+            //      clean:                  (default: undefined) whether or not to clean the destination before processing.
+            //                                                   true to use "dest" locations or specify alternate array.
+            //      cleanAppend:            (default: undefined) if using dest as clean target you may want to append a
+            //                                                   a string such as '/**/*.js'. this would preserve
+            //                                                   the dest folder but remove matching files.
+            //                                                   you can specify a string or array of strings.
+            //                                                   if an array each string will be appended to the
+            //                                                   root dest.
+            //      filter:                 (default: undefined) this is the glob filter used by the assets builder to simplify
+            //                                                   logic. usually only needs to be specified when using concat
+            //                                                   or copy or perhaps you're using a different extension for
+            //                                                   your html files say .ejs you might set ex: "**/*.ejs"
+            //      watch:                  (default: undefined) true to watch src or specify array of globs.
+            //      jsonPath:               (default: "bower.json") only used for bower, the path to "bower.json".
+            //      componentPath:          (default: "bower_components") only used with bower, the path to bower_components.
+            //      preserveStructure:      (default: true) only used with bower, preserves folder structure on output.
+            //      src:                    (default: undefined) the sources to include.
+            //      as:                     (default: undefined) output as this name, required for concat.
+            //      dest:                   (default: undefined) the output directory.
+            bundle: {
+                framework: {
+                    strategy: 'concat',
+                    watch: true,
+                    minify: false,
+                    clean: true,
+                    cleanAppend: '/**/*.js',
+                    src: ['./web/assets/framework/**/*.js'],
+                    as: 'app.js',
+                    dest: './web/public/js',
+                    options: {}
+                },
+                scripts: {
+                    strategy: 'copy',
+                    watch: true,
+                    minify: false,
+                    clean: true,
+                    cleanAppend: '/**/*.js',
+                    src: ['./web/assets/scripts/**/*.js'],
+                    dest: './web/public/js',
+                    options: {}
+                },
+                styles: {
+                    strategy: 'copy',
+                    watch: true,
+                    minify: false,
+                    clean: true,
+                    cleanAppend: '/**/*.css',
+                    src: ['./web/assets/styles/*.scss'],
+                    dest: './web/public/css',
+                    options: {}
+                },
+                views: {
+                    strategy: 'copy',
+                    watch: true,
+                    clean: true,
+                    cleanAppend: '/**/*.html',
+                    src: ['./web/assets/framework/**/views/**/*.html'],
+                    dest: './web/views',
+                    options: {
+                        ignorePath: ['/views'],
+                        collapseWhitespace: true,
+                        env: 'development'
+                    }
+                }
+            },
+
+            // link is used to automatically attach file references to a view.
+            // each configuration below "link" will be processed.
+            // see https://github.com/klei/gulp-inject for full options.
+            // PROPERTIES:
+            //      to:                      (default: undefined) the view to be processed. if undefined layout from
+            //                                                    express is used..
+            //      src:                     (default: './web/public/css/**/*.css', './web/public/js/**/*.js') the sources to be linked.
+            //      dest:                    (default: undefined) the output path, if undefined root of your express views is used.
+            //      ignorePath:              (default: '/web/public') paths in resoures that should be ignored/stripped.
+            //      starttag:                (default: '<!-- inject:{{ext}} -->') the start tag when linking begins
+            //                                         in your html page where {{ext}} matches the extension type of your file.
+            //      endtag:                  (default: '<!-- endinject -->') the end tag where linking ends.
+            link: {
+                layout: {
+                    to: undefined,
+                    src: ['!./web/public/css/errors.css', './web/public/css/**/*.css', './web/public/js/**/*.js' ],
+                    dest: undefined,
+                    options: {
+                        ignorePath: ['/web/public'],
+                        starttag: '<!-- inject:{{ext}} -->',
+                        endtag: '<!-- endinject -->'
+                    }
+                }
+            }
+		}
+	};
+}
+```
 
 
 
