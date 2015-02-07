@@ -1,4 +1,5 @@
 #Controllers
+----
 
 Controllers are used to render data or expose data to your application.
 
@@ -8,13 +9,14 @@ See [http://expressjs.com/4x/api.html#res.status](http://expressjs.com/4x/api.ht
 
 Example user controller below. 
 
-<pre>
+```js
+
 module.exports = {
 
     // returns json object.
     profile: function (req, res, next) {
         var data = {}; // get data from your database.
-        res.json(data); 
+        res.status(200).json(data); 
     }
      
     // rendering a view with locals.
@@ -52,4 +54,5 @@ module.exports = {
     }  
      
 };
-</pre>
+
+```

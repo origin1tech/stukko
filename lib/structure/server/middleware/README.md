@@ -6,7 +6,8 @@ There are two ways to configure middleware. The first is what you are probably a
 
 ###Standard Middleware
 
-<pre>
+```js
+
     module.exports = function (req, res, next) {
     
         // do something handle request or response.
@@ -16,15 +17,18 @@ There are two ways to configure middleware. The first is what you are probably a
         // or if meets condition continue down stack.
         else
             next();
+
     };
-</pre>
+
+```
 
 ###Ordered Middleware
 
 In some cases the order of your middleware is quite important. For these use cases Stukko allows you to specify middleware
 as an object with an order property.
 
-<pre>
+```js
+
     module.exports = {
     
         enabled: true,
@@ -39,17 +43,21 @@ as an object with an order property.
                 next();
         }
     }
-</pre>
+
+```
 
 ###Middleware w/ Require
 
-You can also configure your middleware in the same manner that the default options middleware is configured for common modules in Express is.
+You can also configure your middleware in the same manner that the default options middleware is configured for 
+common modules in Express is.
 
-Simply set the property require: true and for use: 'module-name'. Stukko will automatically search within its own modules as well as the application's.
+Simply set the property require: true and for use: 'module-name'. Stukko will automatically search within its own 
+modules as well as the application's.
 
 If it finds the module successfully it is required and any options provided are applied to it.
 
-<pre>
+```js
+
     module.exports = {
     
         enabled: true,
@@ -58,15 +66,16 @@ If it finds the module successfully it is required and any options provided are 
         options: {} // can be string, object or array, Stukko will sort it out automatically for you.
         
     }
-</pre>
+
+```
 
 ###Order of Default Middlware
 
-The built in middlware modules are merged with your custom middlware. To assure proper order within
+The built in middlware modules are merged with your custom middlware. To ensure proper order within
 the stack please take note of the default modules ordering. Unless you specify an order in your middleware
 it will be sorted after "inject" below. 
 
-NOTE: custom middlware order if not specified increases by 1 whereas default middleware increases by a 
+NOTE: custom middleware order if not specified increases by 1 whereas default middleware increases by a 
 rate of 5 to ensure gaps for inserting custom middleware before/after a default middlware module.
 
 morgan              0
