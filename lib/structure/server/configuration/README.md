@@ -1,10 +1,10 @@
 #Configuration
 ----
 
-You may create as many configurations as you wish. Often no more than a development, productions and perhaps a local 
+You may create as many configurations as you wish. Often no more than a development, productions and perhaps a local
 are required.
 
-As the entire configuration is loaded and exposed in middleware you may wish to create custom properties/objects 
+As the entire configuration is loaded and exposed in middleware you may wish to create custom properties/objects
 for use in middleware.
 
 Configrations can be started by specifying that config at the time of start up.
@@ -54,7 +54,7 @@ module.exports = function () {
         //      handler:                        (default: error) the error handler name.
         //      timeout:                        (default: 1200) the timeout used if user handler fails.
         //      spa:                            (default: false) when true 404 errors are ignored for non-asset
-        //                                                       routes. when a defined route is not found the 
+        //                                                       routes. when a defined route is not found the
         //                                                       the request renders the default layout allowing
         //                                                       client framework to handle not found paths.
         //      consoleTrace:                   (default: true) when true stack trace is shown in console. otherwise
@@ -63,12 +63,12 @@ module.exports = function () {
             handler: 'error',
             timeout: 1200,
             spa: false,
-            consoleTrace: true
+            consoleTrace: undefined
         },
 
         // PROPERTIES
         //      logo:                           (default: true) when true display the Stukko logo when booting.
-		logo: true,
+		logo: undefined,
 
         // db property configures your database and specified which
         // module to be used on init.
@@ -94,11 +94,11 @@ module.exports = function () {
         db: {
 			module: 'dirty',
 			modelCase: 'capitalize',
-            globalize: true,
+            globalize: undefined,
             modelPrefix: '$',
-            connect: true,
-		    load: true,
-            drop: true,
+            connect: undefined,
+		    load: undefined,
+            drop: false,
             seed: false,
             options: {
                 database: undefined
@@ -136,28 +136,28 @@ module.exports = function () {
 			routes: '/server/routes'
 		},
         // Modules Filter is a regular expression
-        // for the purpose of filtering what files 
+        // for the purpose of filtering what files
         // are processed by Stukko.
         // ex: (.+)\.js$ would include all .js files.
         // default ex: ^[^_](.+)\.js$ would include all .js files
         //      while excluding any that start with _
         modulesFilter: '^[^_](.+)\\.js$',
-        
+
         // this configures auto generated routing for the application.
         // to use this feature default controllers MUST be defined
         // in your /server/controllers/base directory. See README.md
-        // for configuration examples. 
+        // for configuration examples.
         // PROPERTIES:
         //      lower:                          (default: true) when true forces lower case routes otherwise uses as defined.
         //      models:                         (default: true) when true routes are generated for models.
-        //      controllers:                    (default: true) when true routes are generated for controllers. 
-        //      crud:                           (default: false) when true crud routes are generated
+        //      controllers:                    (default: true) when true routes are generated for controllers.
+        //      crud:                           (default: true) when true crud routes are generated
         //      rest:                           (default: true) when true REST routes are generated.
         //      prefix:                         (default: 'api') the prefix used for rest routes.
-     
+
         //      filter:                         (default: 'default') the name of the default filter in /security/filters.
-        //      policyStrict:                   (default: true) when true policy filters must exist/accessible or application is halted.
-        
+        //      policyStrict:                   (default: false) when true policy filters must exist/accessible or application is halted.
+
         //      generator:                      (default: 'generator') the generator controller name used for generating routes.
         //      generatorActions:               (default: object) these are the keys to lookup within your generator.
         //                                                        these mappings are required to determine REST actions.
@@ -170,26 +170,26 @@ module.exports = function () {
         //          update:                     (default: 'update') action name for updating a record.
         //          destroy:                    (default: 'destroy') action name for destroying a record.
         routing: {
-            lower: true,
-            models: true,
-            controllers: true,
-            crud: true,
-            rest: true,
-            prefix: '/api',      
-            filter: 'default',          
-            policyStrict: false,         
+            lower: undefined,
+            models: undefined,
+            controllers: undefined,
+            crud: undefined,
+            rest: undefined,
+            prefix: '/api',
+            filter: 'default',
+            policyStrict: undefined,
             generator: 'generator',
             generatorActions: {
                 findAll: 'findAll',
                 find: 'find',
                 create: 'create',
                 update: 'update',
-                destroy: 'destroy'               
+                destroy: 'destroy'
             }
         },
-        
-        // hooks are called at various stages in the 
-        // request. currently the following hooks are 
+
+        // hooks are called at various stages in the
+        // request. currently the following hooks are
         // supported beforeMiddleware, beforeFilters
         // and beforeActions.
         //
@@ -204,7 +204,7 @@ module.exports = function () {
         //      beforeActions:      (default: 'beforeActions') module name for actions hook.
         hooks: {
             timeout: 1200,
-            routesOnly: true,
+            routesOnly: undefined,
             beforeMiddleware: 'beforeMiddleware',
             beforeFilters: 'beforeFilters',
             beforeActions: 'beforeActions'
@@ -226,10 +226,10 @@ module.exports = function () {
 			session: {
 				use: 'express-session', options: {
 					module: 'memory',
-                    mongooseConnection: false,                 //(default: false) when true if db.connection exists
+                    mongooseConnection: undefined,                 //(default: false) when true if db.connection exists
                                                                // use it. only valid for connect-mongo && mongoose!
-                    resave: true,
-                    saveUninitialized: true
+                    resave: undefined,
+                    saveUninitialized: undefined
 				}
 			},
 			methodOverride: { use: 'method-override' },
@@ -291,7 +291,7 @@ module.exports = function () {
         //                                                  and asset linking has completed. disabling may
         //                                                  result in an error when using livereload.
         assets: {
-			enabled: true,
+			enabled: undefined,
             livereload: false,
             livereloadInterval: 400,
 
@@ -309,37 +309,37 @@ module.exports = function () {
             //                                                   bower: gets bower main files/outputs to dest.
             //                                                   browserify: client side require utility.
             //                                                   es6: compiles es5 to es5.
-            //      minify:                 (default: undefined) valid when using "copy", "concat" or "browserify".
-            //      options:                (default: undefined) options that can be specified for browserify and concat.
-            //      header:                 (default: undefined) only applies when using concat. the header to be
-            //                                                   added to the top of the concatenated file.
-            //      footer:                 (default: undefined) only applies when using concat. the footer to be
-            //                                                   added to end of concatenated file.
-            //      clean:                  (default: undefined) whether or not to clean the destination before processing.
-            //                                                   true to use "dest" locations or specify alternate array.
-            //      cleanAppend:            (default: undefined) if using dest as clean target you may want to append a
-            //                                                   a string such as '/**/*.js'. this would preserve
-            //                                                   the dest folder but remove matching files.
-            //                                                   you can specify a string or array of strings.
-            //                                                   if an array each string will be appended to the
-            //                                                   root dest.
-            //      filter:                 (default: undefined) this is the glob filter used by the assets builder to simplify
-            //                                                   logic. usually only needs to be specified when using concat
-            //                                                   or copy or perhaps you're using a different extension for
-            //                                                   your html files say .ejs you might set ex: "**/*.ejs"
-            //      watch:                  (default: undefined) true to watch src or specify array of globs.
-            //      jsonPath:               (default: "bower.json") only used for bower, the path to "bower.json".
-            //      componentPath:          (default: "bower_components") only used with bower, the path to bower_components.
-            //      preserveStructure:      (default: true) only used with bower, preserves folder structure on output.
-            //      src:                    (default: undefined) the sources to include.
-            //      as:                     (default: undefined) output as this name, required for concat.
-            //      dest:                   (default: undefined) the output directory.
+            //      minify:                 valid when using "copy", "concat" or "browserify".
+            //      options:                options that can be specified for browserify and concat.
+            //      header:                 only applies when using concat. the header to be
+            //                                  added to the top of the concatenated file.
+            //      footer:                 only applies when using concat. the footer to be
+            //                                  added to end of concatenated file.
+            //      clean:                  whether or not to clean the destination before processing.
+            //                                  true to use "dest" locations or specify alternate array.
+            //      cleanAppend:            if using dest as clean target you may want to append a
+            //                                  a string such as '/**/*.js'. this would preserve
+            //                                  the dest folder but remove matching files.
+            //                                  you can specify a string or array of strings.
+            //                                  if an array each string will be appended to the
+            //                                  root dest.
+            //      filter:                 this is the glob filter used by the assets builder to simplify
+            //                                   logic. usually only needs to be specified when using concat
+            //                                   or copy or perhaps you're using a different extension for
+            //                                   your html files say .ejs you might set ex: "**/*.ejs"
+            //      watch:                  true to watch src or specify array of globs.
+            //      jsonPath:               only used for bower, the path to "bower.json".
+            //      componentPath:          only used with bower, the path to bower_components.
+            //      preserveStructure:      only used with bower, preserves folder structure on output.
+            //      src:                    the sources to include.
+            //      as:                     output as this name, required for concat.
+            //      dest:                   the output directory.
             bundle: {
                 framework: {
                     strategy: 'concat',
-                    watch: true,
-                    minify: false,
-                    clean: true,
+                    watch: undefined,
+                    minify: undefined,
+                    clean: undefined,
                     cleanAppend: '/**/*.js',
                     src: ['./web/assets/framework/**/*.js'],
                     as: 'app.js',
@@ -348,9 +348,9 @@ module.exports = function () {
                 },
                 scripts: {
                     strategy: 'copy',
-                    watch: true,
-                    minify: false,
-                    clean: true,
+                    watch: undefined,
+                    minify: undefined,
+                    clean: undefined,
                     cleanAppend: '/**/*.js',
                     src: ['./web/assets/scripts/**/*.js'],
                     dest: './web/public/js',
@@ -358,9 +358,9 @@ module.exports = function () {
                 },
                 styles: {
                     strategy: 'copy',
-                    watch: true,
-                    minify: false,
-                    clean: true,
+                    watch: undefined,
+                    minify: undefined,
+                    clean: undefined,
                     cleanAppend: '/**/*.css',
                     src: ['./web/assets/styles/*.scss'],
                     dest: './web/public/css',
@@ -368,14 +368,14 @@ module.exports = function () {
                 },
                 views: {
                     strategy: 'copy',
-                    watch: true,
-                    clean: true,
+                    watch: undefined,
+                    clean: undefined,
                     cleanAppend: '/**/*.html',
                     src: ['./web/assets/**/views/**/*.html'],
                     dest: './web/views',
                     options: {
                         ignorePath: ['/views'],
-                        collapseWhitespace: true,
+                        collapseWhitespace: undefined,
                         env: 'development'
                     }
                 }
