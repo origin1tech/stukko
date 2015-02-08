@@ -22,6 +22,7 @@ $ stukko start --config laptop
 files.
 
 ```js
+
 'use strict';
 
 module.exports = function () {
@@ -50,27 +51,26 @@ module.exports = function () {
 
         // defines what types of status errors to handle.
         // PROPERTIES
-        //      404:                            (default: true) usually true, set to false when using a SPA
-        //                                                      and handling routes client side. probably want to
-        //                                                      set catchAll to "true" also.
-        //      500:                            (default: true) almost always true, handles typical/unknown exceptions.
-        statusErrors: {
-            404: true,
-            500: true
+        //      handler:                        (default: error) the error handler name.
+        //      timeout:                        (default: 1200) the timeout used if user handler fails.
+        //      spa:                            (default: false) when true 404 errors are ignored for non-asset
+        //                                                       routes. when a defined route is not found the 
+        //                                                       the request renders the default layout allowing
+        //                                                       client framework to handle not found paths.
+        errors: {
+            handler: 'error',
+            timeout: 1200,
+            spa: false
         },
 
-        // PROPERTIES
-        //      catchAll:                       (default: false) when true a catch all route that resolves
-        //                                                       layout is used. used to not throw 404 when valid
-        //                                                       client side routes exists in a SPA.
+        // PROPERTIES      
         //      logo:                           (default: true) when true display the Stukko logo when booting.
-        catchAll: false,
 		logo: true,
 
         // db property configures your database and specified which
         // module to be used on init.
         // PROPERTIES
-        //      module:                         (default: 'dirty') the database module used for your app.
+        //      module:                         (default: 'dirty') the database module used for your app.        
         //      modelCase:                      (default: 'capitalize') the casing of the get name options are
         //                                                              'capitalize, upper, lower, camel, pascal'.
         //      globalize:                      (default: true) sets models to GLOBAL namespace ex: $User.
@@ -86,6 +86,8 @@ module.exports = function () {
         //      seed:                           (default: false) applies to Sequelize, when true any seeds in
         //                                                       /server/seeds will be processed, drop/load must be set
         //                                                       to true if using Sequelize.
+        //      options:                        (default: object) the options to be passed to database connection
+        //                                                        see connecg
         db: {
 			module: 'dirty',
 			modelCase: 'capitalize',
@@ -94,7 +96,10 @@ module.exports = function () {
             connect: true,
 		    load: true,
             drop: true,
-            seed: false
+            seed: false,
+            options: {
+                database: undefined
+            }
         },
 
         // Stukko uses Express to server up pages.
@@ -128,28 +133,28 @@ module.exports = function () {
 			routes: '/server/routes'
 		},
         // Modules Filter is a regular expression
-        // for the purpose of filtering what files
+        // for the purpose of filtering what files 
         // are processed by Stukko.
         // ex: (.+)\.js$ would include all .js files.
         // default ex: ^[^_](.+)\.js$ would include all .js files
         //      while excluding any that start with _
         modulesFilter: '^[^_](.+)\\.js$',
-
+        
         // this configures auto generated routing for the application.
         // to use this feature default controllers MUST be defined
         // in your /server/controllers/base directory. See README.md
-        // for configuration examples.
+        // for configuration examples. 
         // PROPERTIES:
         //      lower:                          (default: true) when true forces lower case routes otherwise uses as defined.
         //      models:                         (default: true) when true routes are generated for models.
-        //      controllers:                    (default: true) when true routes are generated for controllers.
+        //      controllers:                    (default: true) when true routes are generated for controllers. 
         //      crud:                           (default: false) when true crud routes are generated
         //      rest:                           (default: true) when true REST routes are generated.
         //      prefix:                         (default: 'api') the prefix used for rest routes.
-
+     
         //      filter:                         (default: 'default') the name of the default filter in /security/filters.
         //      policyStrict:                   (default: true) when true policy filters must exist/accessible or application is halted.
-
+        
         //      generator:                      (default: 'generator') the generator controller name used for generating routes.
         //      generatorActions:               (default: object) these are the keys to lookup within your generator.
         //                                                        these mappings are required to determine REST actions.
@@ -167,21 +172,21 @@ module.exports = function () {
             controllers: true,
             crud: true,
             rest: true,
-            prefix: '/api',
-            filter: 'default',
-            policyStrict: false,
+            prefix: '/api',      
+            filter: 'default',          
+            policyStrict: false,         
             generator: 'generator',
             generatorActions: {
                 findAll: 'findAll',
                 find: 'find',
                 create: 'create',
                 update: 'update',
-                destroy: 'destroy'
+                destroy: 'destroy'               
             }
         },
-
-        // hooks are called at various stages in the
-        // request. currently the following hooks are
+        
+        // hooks are called at various stages in the 
+        // request. currently the following hooks are 
         // supported beforeMiddleware, beforeFilters
         // and beforeActions.
         //
@@ -285,7 +290,7 @@ module.exports = function () {
         assets: {
 			enabled: true,
             livereload: false,
-            livereloadInterval: 200,
+            livereloadInterval: 400,
 
             // bundles are groups of files that our processed for concatenation,
             // browserify or simply copied to an output destination. these
@@ -363,7 +368,7 @@ module.exports = function () {
                     watch: true,
                     clean: true,
                     cleanAppend: '/**/*.html',
-                    src: ['./web/assets/framework/**/views/**/*.html'],
+                    src: ['./web/assets/**/views/**/*.html'],
                     dest: './web/views',
                     options: {
                         ignorePath: ['/views'],
@@ -399,6 +404,6 @@ module.exports = function () {
             }
 		}
 	};
-}
+};
 
 ```
