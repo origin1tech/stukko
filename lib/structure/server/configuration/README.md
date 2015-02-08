@@ -57,20 +57,23 @@ module.exports = function () {
         //                                                       routes. when a defined route is not found the 
         //                                                       the request renders the default layout allowing
         //                                                       client framework to handle not found paths.
+        //      consoleTrace:                   (default: true) when true stack trace is shown in console. otherwise
+        //                                                      it is surpressed but output to the log file for ref.
         errors: {
             handler: 'error',
             timeout: 1200,
-            spa: false
+            spa: false,
+            consoleTrace: true
         },
 
-        // PROPERTIES      
+        // PROPERTIES
         //      logo:                           (default: true) when true display the Stukko logo when booting.
 		logo: true,
 
         // db property configures your database and specified which
         // module to be used on init.
         // PROPERTIES
-        //      module:                         (default: 'dirty') the database module used for your app.        
+        //      module:                         (default: 'dirty') the database module used for your app.
         //      modelCase:                      (default: 'capitalize') the casing of the get name options are
         //                                                              'capitalize, upper, lower, camel, pascal'.
         //      globalize:                      (default: true) sets models to GLOBAL namespace ex: $User.
