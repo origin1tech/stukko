@@ -54,7 +54,7 @@ module.exports = function () {
         //      handler:                        (default: error) the error handler name.
         //      timeout:                        (default: 1200) the timeout used if user handler fails.
         //      spa:                            (default: false) when true 404 errors are ignored for non-asset
-        //                                                       routes. when a defined route is not found the
+        //                                                       routes. when a defined route is not found the 
         //                                                       the request renders the default layout allowing
         //                                                       client framework to handle not found paths.
         //      consoleTrace:                   (default: true) when true stack trace is shown in console. otherwise
@@ -66,14 +66,14 @@ module.exports = function () {
             consoleTrace: undefined
         },
 
-        // PROPERTIES
+        // PROPERTIES      
         //      logo:                           (default: true) when true display the Stukko logo when booting.
 		logo: undefined,
 
         // db property configures your database and specified which
         // module to be used on init.
         // PROPERTIES
-        //      module:                         (default: 'dirty') the database module used for your app.
+        //      module:                         (default: 'dirty') the database module used for your app.        
         //      modelCase:                      (default: 'capitalize') the casing of the get name options are
         //                                                              'capitalize, upper, lower, camel, pascal'.
         //      globalize:                      (default: true) sets models to GLOBAL namespace ex: $User.
@@ -92,7 +92,7 @@ module.exports = function () {
         //      options:                        (default: object) the options to be passed to database connection
         //                                                        see connecg
         db: {
-			module: 'dirty',
+			module: 'dirty',          
 			modelCase: 'capitalize',
             globalize: undefined,
             modelPrefix: '$',
@@ -136,17 +136,17 @@ module.exports = function () {
 			routes: '/server/routes'
 		},
         // Modules Filter is a regular expression
-        // for the purpose of filtering what files
+        // for the purpose of filtering what files 
         // are processed by Stukko.
         // ex: (.+)\.js$ would include all .js files.
         // default ex: ^[^_](.+)\.js$ would include all .js files
         //      while excluding any that start with _
         modulesFilter: '^[^_](.+)\\.js$',
-
+        
         // this configures auto generated routing for the application.
         // to use this feature default controllers MUST be defined
         // in your /server/controllers/base directory. See README.md
-        // for configuration examples.
+        // for configuration examples. 
         // PROPERTIES:
         //      lower:                          (default: true) when true forces lower case routes otherwise uses as defined.
         //      models:                         (default: true) when true routes are generated for models.
@@ -154,10 +154,10 @@ module.exports = function () {
         //      crud:                           (default: true) when true crud routes are generated
         //      rest:                           (default: true) when true REST routes are generated.
         //      prefix:                         (default: 'api') the prefix used for rest routes.
-
+     
         //      filter:                         (default: 'default') the name of the default filter in /security/filters.
         //      policyStrict:                   (default: false) when true policy filters must exist/accessible or application is halted.
-
+        
         //      generator:                      (default: 'generator') the generator controller name used for generating routes.
         //      generatorActions:               (default: object) these are the keys to lookup within your generator.
         //                                                        these mappings are required to determine REST actions.
@@ -175,8 +175,8 @@ module.exports = function () {
             controllers: undefined,
             crud: undefined,
             rest: undefined,
-            prefix: '/api',
-            filter: 'default',
+            prefix: '/api',      
+            filter: 'default',          
             policyStrict: undefined,
             generator: 'generator',
             generatorActions: {
@@ -184,12 +184,12 @@ module.exports = function () {
                 find: 'find',
                 create: 'create',
                 update: 'update',
-                destroy: 'destroy'
+                destroy: 'destroy'               
             }
         },
-
-        // hooks are called at various stages in the
-        // request. currently the following hooks are
+        
+        // hooks are called at various stages in the 
+        // request. currently the following hooks are 
         // supported beforeMiddleware, beforeFilters
         // and beforeActions.
         //
@@ -202,12 +202,15 @@ module.exports = function () {
         //      beforeMiddleware    (default: 'beforeMiddleware') module name for middleware hook.
         //      beforeFilters:      (default: 'beforeFilters') module name for filters hook.
         //      beforeActions:      (default: 'beforeActions') module name for actions hook.
+        //      afterModels:        (default: 'afterModels') hook for globally updating model schemas.
+        //                                                   NOT supported for Sequelize.
         hooks: {
             timeout: 1200,
             routesOnly: undefined,
             beforeMiddleware: 'beforeMiddleware',
             beforeFilters: 'beforeFilters',
-            beforeActions: 'beforeActions'
+            beforeActions: 'beforeActions',
+            afterModels: 'afterModels'
         },
 
         // cli path for wrapping in user defined command line functions.
@@ -301,16 +304,21 @@ module.exports = function () {
             // ALL paths are relative to the root of your application.
             // IMPORTANT "views" must be last bundle.
             // PROPERTIES:
-            //      strategy:               (default: undefined) concat, copy, bower, es6(using 6to5), and browserify.
+            //      strategy:               (default: undefined) concat, copy, bower, babel, traceur, and browserify.
             //                                                   concat: concatenates files and ouputs "as" defined to dest.
             //                                                          concat can also process less and sass files
             //                                                          after concatenation.
             //                                                   copy: simply copies from source to dest no other process.
             //                                                   bower: gets bower main files/outputs to dest.
             //                                                   browserify: client side require utility.
-            //                                                   es6: compiles es5 to es5.
+            //                                                   babel: compiles es6 to es5.
+            //                                                   traceur: compiles es6 to es5.
+            //                                                   systemjs: uses systemjs-builder as used in jspm.
             //      minify:                 valid when using "copy", "concat" or "browserify".
-            //      options:                options that can be specified for browserify and concat.
+            //      soucemaps:              valid when js files "minify" "concat" or "browserify" specify path to save
+            //                                  map files or set false to disable. undefined saves maps inline.
+            //      options:                options that are passed to the plugin. sass, browserify, concat, babel, traceur, cssmin
+            //                                  less, html.
             //      header:                 only applies when using concat. the header to be
             //                                  added to the top of the concatenated file.
             //      footer:                 only applies when using concat. the footer to be
@@ -328,52 +336,59 @@ module.exports = function () {
             //                                   or copy or perhaps you're using a different extension for
             //                                   your html files say .ejs you might set ex: "**/*.ejs"
             //      watch:                  true to watch src or specify array of globs.
-            //      jsonPath:               only used for bower, the path to "bower.json".
-            //      componentPath:          only used with bower, the path to bower_components.
+            //      bowerPath:              only used for bower, the path to "bower.json".
+            //      bowerComponentsPath:    only used with bower, the path to bower_components.
             //      preserveStructure:      only used with bower, preserves folder structure on output.
+            //      transform:              only used with browserify, accepts "babel" or "traceur" where gulp-traceur
+            //                                  or gulp-babel are installed. use bundle.options above for passing in
+            //                                  transform options. if any browserify options are specified they will
+            //                                  be ignored by the transform compiler.
+            //      systemjsPath:           valid only for "systemjs" strategy. specifies the path to your config file.
             //      src:                    the sources to include.
             //      as:                     output as this name, required for concat.
             //      dest:                   the output directory.
             bundle: {
-                framework: {
-                    strategy: 'concat',
-                    watch: undefined,
-                    minify: undefined,
+                app: {                                  // folder for client side frameworks such as Angular, Ember etc.
+                    strategy: 'concat',                 // the folder structure within app is entire up to the developer
+                    watch: undefined,                   // depending on what strategy that's used folder structures
+                    minify: undefined,                  // will vary.
                     clean: undefined,
                     cleanAppend: '/**/*.js',
-                    src: ['./web/assets/framework/**/*.js'],
+                    src: ['./assets/app/**/*.js'],
                     as: 'app.js',
                     dest: './web/public/js',
                     options: {}
                 },
-                scripts: {
-                    strategy: 'copy',
-                    watch: undefined,
-                    minify: undefined,
+                scripts: {                              // directory for misc scripts, helpers & mixins
+                    strategy: 'copy',                   // this is useful for when you wish to have scripts
+                    watch: undefined,                   // that are not part of your app but are required
+                    minify: undefined,                  // for features your app uses.
                     clean: undefined,
                     cleanAppend: '/**/*.js',
-                    src: ['./web/assets/scripts/**/*.js'],
+                    src: ['./assets/scripts/**/*.js'],
                     dest: './web/public/js',
                     options: {}
                 },
-                styles: {
-                    strategy: 'copy',
-                    watch: undefined,
-                    minify: undefined,
+                styles: {                               // directory containing css, scss and/or less.
+                    strategy: 'copy',                   // by default only top level files are processed.
+                    watch: undefined,                   // this prevents directories containing support
+                    minify: undefined,                  // files for less/sass from being output.
                     clean: undefined,
                     cleanAppend: '/**/*.css',
-                    src: ['./web/assets/styles/*.scss'],
+                    src: ['./assets/styles/*.scss',
+                          './assets/styles/*.less',
+                          './assets/styles/*.css'],
                     dest: './web/public/css',
                     options: {}
                 },
-                views: {
-                    strategy: 'copy',
-                    watch: undefined,
-                    clean: undefined,
-                    cleanAppend: '/**/*.html',
-                    src: ['./web/assets/**/views/**/*.html'],
-                    dest: './web/views',
-                    options: {
+                views: {                                // by default this is a directory containing
+                    strategy: 'copy',                   // all your views and partials. Some may prefer
+                    watch: undefined,                   // these views reside in own folder
+                    clean: undefined,                   // this can be obtained by changing ./assets/**/*.html
+                    cleanAppend: '/**/*.html',          // to ./assets/views/**/*.html. the key thing to remember
+                    src: ['./assets/app/**/*.html'],    // with views is that any part of the path you don't
+                    dest: './web/views',                // want output should be specified in the options.ignorePath
+                    options: {                          // this prevents ending up with web/views/views for example.
                         ignorePath: ['/views'],
                         collapseWhitespace: undefined,
                         env: 'development'
@@ -383,7 +398,12 @@ module.exports = function () {
 
             // link is used to automatically attach file references to a view.
             // each configuration below "link" will be processed.
-            // see https://github.com/klei/gulp-inject for full options.
+            // in some cases the order of files is important. Asset linking
+            // respect the order you provide. That in mind it is common to
+            // instead use RequireJs or SystemJs to handing lazy loading of
+            // these files. When using either of the above your linking
+            // may contain only one or two globs whereas the module loader
+            // handles the rest.
             // PROPERTIES:
             //      to:                      (default: undefined) the view to be processed. if undefined layout from
             //                                                    express is used..
@@ -396,7 +416,8 @@ module.exports = function () {
             link: {
                 layout: {
                     to: undefined,
-                    src: ['!./web/public/css/errors.css', './web/public/css/**/*.css', './web/public/js/**/*.js' ],
+                    src: ['./web/public/css/**/*.css',
+                          './web/public/js/**/*.js' ],
                     dest: undefined,
                     options: {
                         ignorePath: ['/web/public'],

@@ -1,0 +1,51 @@
+{
+    "node": true,
+    "browser": true,
+    "esnext": true,
+    "bitwise": true,
+    "camelcase": true,
+    "curly": false,
+    "eqeqeq": false,
+    "immed": true,
+    "indent": 4,
+    "latedef": true,
+    "newcap": true,
+    "noarg": true,
+    "regexp": true,
+    "undef": true,
+    "unused": true,
+    "strict": false,
+    "trailing": true,
+    "smarttabs": true,
+    "maxlen": 125,
+    "predef": [      
+      
+        "$MODULES",
+        "$$DB",
+        "$$PKG",
+        "$$SETTINGS",
+        "$$SERVICES",
+        "$$LOG",
+        "$$DEBUG",
+        "$$CONTROLLERS",
+        "$$UTILS",
+        "$$PATHS",
+        "$$UTILS",     
+    
+        "ResponseError",
+        "BadRequestError",
+        "UnauthorizedError",
+        "ForbiddenError",
+        "NotFoundError",
+        "ServerError",
+        "NotImplementedError",
+       
+        "define",
+        "describe",
+        "it",
+        "browser",
+        "expect",
+        "assert"
+
+    ]
+}
