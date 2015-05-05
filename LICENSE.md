@@ -1,5 +1,3 @@
-License
-=======
 
 ## MIT License
 

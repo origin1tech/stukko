@@ -21,6 +21,7 @@
     "gulp-html-minifier": "^0.1.5",
     "gulp-if": "^1.2.5",
     "gulp-inject": "^0.4.1",
+    "gulp-less": "^3.0.3",
     "gulp-livereload": "^3.8.0",
     "gulp-load-plugins": "^0.10.0",
     "gulp-sass": "^0.7.1",
