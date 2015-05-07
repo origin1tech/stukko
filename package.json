@@ -38,7 +38,7 @@
     "optimist": "^0.6.1",
     "prompt": "^0.2.13",
     "serve-favicon": "^2.1.6",
-    "stukko-dirty": "origin1tech/stukko-dirty",
+    "stukko-dirty": "^0.0.1",
     "winston": "^0.7.3"
   },
   "devDependencies": {
