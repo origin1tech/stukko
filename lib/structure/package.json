@@ -11,7 +11,7 @@
     "bin": "./bin"
   },
   "dependencies": {
-    "stukko": "origin1tech/stukko",
+    "stukko": "^1.6.2",
     "event-stream": "^3.1.5",
     "del": "^1.1.1",
     "gulp": "^3.8.5",
