@@ -5,7 +5,7 @@ Routes are extremely powerful. You can route to a controller, redirect a url, re
 even specify security policies to validate against along the way.
 
 It's **important** to note that unlike Controllers, Helpers and Security modules, Route modules are merged into one 
-object. The purpose of not defining a single file to store routes is to make it easier to maintain and group. 
+single object. The purpose of not defining a single file to store routes is to make it easier to maintain and group. 
 With that said for simple applications you may choose to use only one route file.
 
 Some example routes:
@@ -13,6 +13,9 @@ Some example routes:
 ```js
 
 module.exports = {
+
+    // not implemented future feature.
+    router: 'router_name',
     
     // routes default to GET method if no method is specified.
     // in this example the route would call the "user" controller and the "profile" action.

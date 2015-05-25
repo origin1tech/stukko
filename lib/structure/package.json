@@ -10,8 +10,11 @@
   "directories": {
     "bin": "./bin"
   },
+  "scripts": {
+    "preinstall": "npm i -g stukko"
+  },
   "dependencies": {
-    "stukko": "^1.6.2",
+    "stukko": "^1.6.4",
     "event-stream": "^3.1.5",
     "del": "^1.1.1",
     "gulp": "^3.8.5",
