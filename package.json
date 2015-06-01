@@ -1,6 +1,6 @@
 {
   "name": "stukko",
-  "version": "1.6.8",
+  "version": "1.6.9",
   "description": "Web Framework for Express",
   "main": "./lib/index.js",
   "preferGlobal": "true",
