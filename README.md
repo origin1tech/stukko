@@ -1,24 +1,24 @@
-#Stukko
+# Stukko
 
-##Pre-Release
+## Pre-Release
 
 This is a pre-release. Using in production should be done with caution. Running changes make break your application.
 
-##Express MVC Web Framework.
+## Express MVC Web Framework.
 
 The following is an overview of the key features in Stukko. Most if not all features have additional configuration 
 examples and documentation in their respective application folders. For example to understand how middleware 
 can be configured see the /server/middleware/README.md file.
 
-##Getting Started
+## Getting Started
 
-###Installing Stukko:
+### Installing Stukko:
 
 ```sh
 npm install -g stukko
 ```
 
-###Setting Path:
+### Setting Path:
 
 **NOTE:** Setting path may not be required. If "stukko start" returns "Cannot find module stukko" then set the PATH
 environment variable below per your platform and distribution.
@@ -39,7 +39,7 @@ Stukko also exposes several methods for managing its apps. Uninstall, install, u
 processes for that EADDRINUSE) among others which we'll cover below. if you plan to host your application installing 
 locally is just fine.
 
-###To create an application:
+### To create an application:
 
 From a command prompt or terminal navigate to the parent directory where you'd like your application to be installed.
 Stukko will create a sub folder by the name you choose in the create method show below:
@@ -54,7 +54,7 @@ you can do this as well. Stukko ships with the **dirty** database module only. Y
 MongoDB, Mongoose, Sequelize or Redis. Or perhaps you want to install connect-redis, connect-mongo or connect-sequelize,
 this can be accomplished in one shot as show here:
 
-###Create application with additional packages:
+### Create application with additional packages:
 
 ```sh
 stukko create todos --packages sequelize|connect-sequelize
@@ -72,7 +72,7 @@ extremely customizable. Paths and structure can be customized to your liking. Fe
 rather easily. Middleware is not only added to the Express stack but a mechanism to order the middleware (why this isn't
 common is all frameworks is a head scratch-er) is available when sequence is critical.
 
-###Does Stukko have an ORM?
+### Does Stukko have an ORM?
 
 Not really, again the idea behind Stukko is to wire up an app with the common middleware, get you connected to your
 database, hook up your sessions and inject some helpers in your request and response objects. **Why didn't we include
@@ -87,7 +87,7 @@ disconnect method and connection state. Stukko ensures that your database fires 
 well. Because Stukko exposes the client and connection you have full control to let Stukko create your models based on
 your configuration or create/define them directly. Either way it just works!
 
-##Paths in Options
+## Paths in Options
 
 In your options or your configuration file (they are one in the same for our discussion) several paths are defined. 
 Paths should be specified as: 
@@ -110,7 +110,7 @@ In the future (NOT CURRENTLY IMPLEMENTED) we may change this to where all relati
 '{{cwd}}/some/path' where cwd would be your current working directory e.g where the root of your app is located. 
 We mention it only because it might make things more clear however we'll maintain fallback to previous versions.
 
-##View Engine Support
+## View Engine Support
 
 Stukko uses consolidate, however currently only supports:
 
@@ -119,7 +119,7 @@ Stukko uses consolidate, however currently only supports:
 - [ejs](https://github.com/visionmedia/ejs)
 - [jade](https://github.com/visionmedia/jade)
 
-##Session Configuration
+## Session Configuration
 
 Stukko supports 3 main types of session connections, Redis(connect-redis), MongoDB(connect-mongo), and 
 MySQL, PostgreSQL, SQLite, MariaDB (connect-sequelize). Sequelize is a SQL Orm which enables connections to 
@@ -172,7 +172,7 @@ You can find those below:
 [connect-mongo](https://github.com/kcbanner/connect-mongo)
 [connect-session-sequelize](https://github.com/mweibel/connect-session-sequelize)
 
-##Middlware Configuration
+## Middlware Configuration
 
 Middleware can be configured several ways. You can return the middleware from within a constructor thereby ensuring 
 the Stukko context will be available, you can create a simple middleware signature much like you'd do in express and 
@@ -213,7 +213,7 @@ module.exports = {
 };
 ```
 
-##Assets & Linking
+## Assets & Linking
 
 **Bundling Assets**
 
@@ -337,7 +337,7 @@ Here are a few where you can copy/past the HTML representation and have it conve
 
 [Haml Converter](http://html2haml.heroku.com/)
 
-##Database Support
+## Database Support
 
 Currently Stukko supports the following database engines:
 
