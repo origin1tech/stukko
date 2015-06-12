@@ -15,7 +15,7 @@ module.exports = Commands;
 
 function Commands(cli) {
 
-    // Commands will be called with the Stukko context.
+    // Commands will be bound with the Stukko context.
     // This enables exposing all of Stukko's objects & properties.
 
     var args, commands, flags;
@@ -33,8 +33,17 @@ function Commands(cli) {
     // config would be accessible as flags.config;
     flags = this.flags;
 
-    //wire up a command.
-    cli.echo = function () {
+    // using "cli" it is possible
+    // to bind your method directly
+    // however some methods may conflict
+    // with Stukko's internal methods.
+    // for this reason you should return
+    // an object of functions. Stukko
+    // will thing prefix those methods
+    // with the file name the functions
+    // are contained in.
+    
+    cli._echo = function () {
 
         // get the second command.
         // the first would be the method "echo" in this case.
@@ -48,7 +57,14 @@ function Commands(cli) {
 
 ```
 
-You can also export an object:
+You can also export an object. This is the suggested method as methods will be prefixed
+with the file name the object of functions resides in. For example if you had a file
+/cli/db.js and returned an object containing the method "create" the command you'd
+call from your terminal would be:
+
+**stukko db-create**
+
+This prevents conflicts with Stukko's own internal methods.
 
 ```js
 
