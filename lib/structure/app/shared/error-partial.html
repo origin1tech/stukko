@@ -1,0 +1,50 @@
+<!--
+    A partial file for displaying
+    errors with Angular view for example
+-->
+<div class="error-header error-status-{{err.status}}">
+    <div class="container">
+        <div>
+            <div class="row">
+                <div class="col-md-4 error-center">
+                    <img class="error-ninja" src="/img/shared/ninja.png"/>
+                </div>
+                <div class="col-md-8 text-center">
+                    <div class="error-status error-inset">{{err.status}}</div>
+                    <p class="error-title error-inset error-inset-sm">{{err.displayName}}!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="error-content">
+    <div class="container text-center">
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8">
+                <p>{{err.message}} Sorry our Ninjas are probably working on it.</p>
+                <p>
+                    <a href="#" class="btn light" ng-class="err.btnStatus" onclick="goto(-1)" >← Previous Page</a>
+                    <a href="{{err.returnUrl}}" class="btn" ng-class="err.btnStatus">Continue →</a>
+                </p>
+                <a class="error-link" href="http://en.wikipedia.org/wiki/HTTP_{{err.status}}">What in the @!#* does {{err.status}} mean?</a>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-2"></div>
+            <div class="col-md-8 text-left error-stack">
+                <br/>
+                <p>{{err.stack}}</p>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+</div>
+<div class="error-footer">
+    <div class="container text-center">
+        &  &copy {{settings.package.copyright}}
+        <a href="/">{{settings.package.displayName}}</a> | ver: {{settings.package.version}}
+    </div>
+</div>
