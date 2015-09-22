@@ -1,6 +1,6 @@
 {
   "name": "stukko",
-  "version": "1.7.7",
+  "version": "1.7.9",
   "description": "Web Framework for Express",
   "main": "./lib/index.js",
   "preferGlobal": "true",
@@ -10,7 +10,6 @@
   "directories": {
     "bin": "./bin"
   },
-  "test": "echo \"Error: no test specified\" && exit 1",
   "dependencies": {
     "bluebird": "^2.3.10",
     "body-parser": "^1.9.2",
@@ -44,9 +43,13 @@
   },
   "devDependencies": {
     "chai": "^1.9.1",
-    "mocha": "^1.20.1"
+    "gulp-bump": "^0.3.1",
+    "gulp-dev": "^0.3.0",
+    "gulp-git": "^1.4.0"
   },
-  "scripts": {},
+  "scripts": {
+    "test": "mocha test"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/origin1tech/stukko.git"
