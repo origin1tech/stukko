@@ -23,6 +23,7 @@
     "csurf": "^1.6.2",
     "debug": "^1.0.4",
     "dirty": "^0.9.9",
+    "ejs": "^2.4.1",
     "express": "^4.10.1",
     "express-session": "^1.6.1",
     "fs-extra": "^0.12.0",
