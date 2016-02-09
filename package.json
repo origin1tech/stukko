@@ -1,6 +1,6 @@
 {
   "name": "stukko",
-  "version": "1.8.2",
+  "version": "1.8.3",
   "description": "Web Framework for Express",
   "main": "./lib/index.js",
   "preferGlobal": "true",
@@ -36,6 +36,7 @@
     "method-override": "^2.3.0",
     "moment": "^2.7.0",
     "morgan": "^1.4.1",
+    "mustache": "^2.2.1",
     "npm": "^1.5.0-alpha-4",
     "optimist": "^0.6.1",
     "prompt": "^0.2.13",
