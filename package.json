@@ -1,6 +1,6 @@
 {
   "name": "stukko",
-  "version": "1.8.8",
+  "version": "1.8.9",
   "description": "Web Framework for Express",
   "main": "./lib/index.js",
   "preferGlobal": "true",
@@ -49,6 +49,7 @@
   "devDependencies": {
     "chai": "^1.9.1",
     "concat-map": "0.0.1",
+    "gulp": "^3.9.1",
     "gulp-bump": "^2.1.0",
     "gulp-dev": "^0.3.0",
     "gulp-git": "^1.4.0",
