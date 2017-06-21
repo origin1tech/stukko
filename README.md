@@ -62,7 +62,7 @@ stukko create todos --packages sequelize|connect-sequelize
 
 **NOTE** You can separate packages using a pipe or comma.
 
-##What is Stukko?
+## What is Stukko?
 
 Stukko is merely a wrapper for Express and its common dependency modules. Where Stukko is different than other Express
 based frameworks you might have tried is in the way it exposes the expected methods and feel you're used to. Instead
